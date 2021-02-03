@@ -2,3 +2,20 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.mainBtn {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 3.5in;
+}
+
+img {
+  width: 2in;
+  height: auto;
+  padding-top: .5in;
+  padding-bottom: .5in;
+}
+
+.jumbotron {
+  background-color: black;   
+}
