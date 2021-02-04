@@ -1,11 +1,8 @@
-// Requiring our models and passport as we've configured it
+// Requiring our models and passport as configured
 const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = function(app) {
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
@@ -13,10 +10,7 @@ module.exports = function(app) {
       id: req.user.id
     });
   });
-
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
+  // Route for signing up a user.
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
@@ -30,10 +24,62 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/api/boards", (req, res) => {
+    const query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.Board.findAll({
+      where: query,
+      include: [db.Board]
+    }).then(dbBoard => {
+      res.json(dbBoard);
+    });
+  });
+
+  app.get("/api/boards/:id", (req, res) => {
+    db.Board.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(dbBoard => {
+      res.json(dbBoard);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
+  });
+
+  //Post route for saving a new boardgame
+  app.post("/api/boards", (req, res) => {
+    db.Board.create(req.body).then(dbBoard => {
+      res.json(dbBoard);
+    });
+  });
+
+  //Post route for saving a new recipe
+  app.post("/api/cookings", (req, res) => {
+    db.Cooking.create(req.body).then(dbCooking => {
+      res.json(dbCooking);
+    });
+  });
+
+  //Post route for saving a new movie
+  app.post("/api/movies", (req, res) => {
+    db.Movies.create(req.body).then(dbMovies => {
+      res.json(dbMovies);
+    });
+  });
+
+  //Post route for saving a new video game
+  app.post("/api/videogames", (req, res) => {
+    db.VideoGames.create(req.body).then(dbVideoGames => {
+      res.json(dbVideoGames);
+    });
   });
 
   // Route for getting some data about our user to be used client side
