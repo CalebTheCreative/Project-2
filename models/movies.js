@@ -1,12 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
-    const Movies = sequelize.define("Movies", {
-        name: { 
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-        },
-        watched: DataTypes.BOOLEAN,
+  const Movies = sequelize.define("Movies", {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    watched: DataTypes.BOOLEAN
+  });
+
+  Movies.associate = function(models) {
+    Movies.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
     });
-    return Movies;
   };
-  
+
+  return Movies;
+};
