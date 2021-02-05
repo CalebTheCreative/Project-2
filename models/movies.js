@@ -7,5 +7,14 @@ module.exports = function(sequelize, DataTypes) {
     },
     watched: DataTypes.BOOLEAN
   });
+
+  Movies.associate = function(models) {
+    Movies.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Movies;
 };
