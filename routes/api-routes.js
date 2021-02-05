@@ -37,16 +37,39 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/boards/:id", (req, res) => {
-    db.Board.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.User]
-    }).then(dbBoard => {
-      res.json(dbBoard);
+  app.get("/api/movies", (req, res) => {
+    const query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.Movies.findAll({
+      where: query,
+      include: [db.Movies]
+    }).then(dbMovies => {
+      res.json(dbMovies);
     });
   });
+
+  // app.put("/api/movies", (req, res) => {
+  //   db.Movies.update(
+  //     req.body,
+  //     {
+  //       where: {
+  //         watched: req.body.id
+  //       }
+  //     }).then(function(dbMov)
+  // })
+
+  // app.get("/api/boards/:id", (req, res) => {
+  //   db.Board.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     include: [db.User]
+  //   }).then(dbBoard => {
+  //     res.json(dbBoard);
+  //   });
+  // });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
