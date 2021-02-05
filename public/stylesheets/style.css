@@ -29,3 +29,8 @@ transition: transform .002s ease, opacity .1s  step-end;
   align-content: center;
   float: inline-start;
 }
+
+#headerLogo {
+  width: 10%;
+  height: auto;
+}
