@@ -16,16 +16,11 @@ $(document).ready(() => {
   });
 });
 
-getWatchlist() {
-  $.get("/api/user_data" + authorId, function(data) {
-    console.log("Posts", data);
-    posts = data;
-    if (!posts || !posts.length) {
-      displayEmpty(author);
-    }
-    else {
-      initializeRows();
-    }
-  });
+getWatchlist(user) {
+  $.get("/api/movies/:id" + UserId) function(data) {
+    
 }
 }
+//https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+
+("#movieSearch")
