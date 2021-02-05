@@ -3,6 +3,7 @@ $(document).ready(() => {
   let queryURL = "";
   let imgURL = "https://image.tmdb.org/t/p/w500";
   queryURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+  //gets popular movies and fills the carousel
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -14,3 +15,17 @@ $(document).ready(() => {
     }
   });
 });
+
+getWatchlist() {
+  $.get("/api/user_data" + authorId, function(data) {
+    console.log("Posts", data);
+    posts = data;
+    if (!posts || !posts.length) {
+      displayEmpty(author);
+    }
+    else {
+      initializeRows();
+    }
+  });
+}
+}
