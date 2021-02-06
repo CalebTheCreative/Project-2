@@ -1,19 +1,37 @@
-<div class="row">
-    
-    {{!-- Add Board Game Form --}}
-    <div class="col-md-8 mt-4 justify-content-md-center">
-      <h3>Add a Game to the list:</h3>
-        <form class="addBG">
-            <div class="form-group">
-                <label for="addBG">Title of Board Game:</label>
-                <input type="text" id="addBG" name="name">
-                <input type="hidden" name="playedBG" value="0">
-            </div>
-
-            <button class="btn btn-secondary mt-1" id="addBGBtn">Add your game!</button>
-        </form>
-        <button class="btn btn-primary mt-1" id="decideBGBtn">Decide a game for me!</button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-transparent fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand addshade" id="prevPgBtn" href="javascript:javascript:history.go(-1)">Previous Page</a>
+        <a class="navbar-brand" href="#"></a>
+        <a class="text-center navBrandLogo" href="/members">
+            <img src="/img/stay-in-logo.png" class="addshade" id="headerLogo" />
+        </a>
+        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="#">
+            <a class="navbar-brand addshade" id="logoutBtn" href="/logout">Log Out</a>
+        </a>
     </div>
+</nav>
 
-    
-</div>
+<div class="w-100">
+    <img src="/img/boardgame-main.jpg" id="mainBGpic" />
+    {{!-- Add Board Game Form --}}
+    <div class="text-block">
+        <div class="row">
+            <div class="col-md-12 mt-4 text-center">
+                <h3 class="addshade">Add a Game to the list:</h3>
+                <form class="addBG">
+                    <div class="form-group">
+                        <label for="addBG addshade">Title of Board Game:</label>
+                        <input type="text" id="addBG" name="name">
+                        <input type="hidden" name="playedBG" value="0">
+                    </div>
+
+                    <button class="btn btn-secondary mt-1" id="addBGBtn">Add your game!</button>
+                </form>
+                <button class="btn btn-primary mt-1" id="decideBGBtn">Decide a game for me!</button>
+            </div><!-- /.column -->
+        </div><!-- /.row -->
+    </div><!-- /.text-block -->
+
+</div><!-- /.w-100 -->
