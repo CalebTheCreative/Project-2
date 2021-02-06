@@ -28,9 +28,50 @@ transition: transform .002s ease, opacity .1s  step-end;
   margin: 0 auto;
   align-content: center;
   float: inline-start;
+  width: 100%;
 }
 
 #headerLogo {
-  width: 10%;
+  width: 20%;
+  height: auto;
+}
+
+#mainBGpic {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  position: relative;
+}
+
+.text-block {
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  top: 150px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-primary {
+  width: 400px;
+  height: auto;
+  background-color: red;
+}
+
+#logoutBtn, #prevPgBtn {
+  color: white;
+}
+
+.addshade {
+  text-shadow: 2px 2px 5px black;
+}
+
+.navBrandLogo {
+  position: relative;
+  left: 55px;
+  width: 40%;
   height: auto;
 }
