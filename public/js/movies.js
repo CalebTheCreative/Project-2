@@ -31,8 +31,8 @@ $(document).ready(() => {
       method: "GET"
     }).then(response => {
       console.log(response);
-      let movieTitle = response.results[i].title
-      let moviePoster = response.results[i].poster_path
+      let movieTitle = response.results[i].title;
+      let moviePoster = response.results[i].poster_path;
     });
   });
 });
