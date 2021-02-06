@@ -24,6 +24,17 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/api/movies/:id", (req, res) => {
+    db.Movies.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(dbMovies => {
+      res.json(dbMovies);
+    });
+  });
+
   app.get("/api/boards", (req, res) => {
     const query = {};
     if (req.query.user_id) {
