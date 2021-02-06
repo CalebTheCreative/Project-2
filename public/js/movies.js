@@ -14,13 +14,25 @@ $(document).ready(() => {
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
     }
   });
+
+  // getWatchlist(user) {
+  //   $.get("/api/movies/:id" + UserId) function(data) {
+
+  // }
+  // }
+
+  $("#addMovieBtn").on("click", event => {
+    event.preventDefault();
+    const movieSearch = $("#addMovie").val();
+    console.log(movieSearch);
+    queryURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false`;
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(response => {
+      console.log(response);
+      let movieTitle = response.results[i].title
+      let moviePoster = response.results[i].poster_path
+    });
+  });
 });
-
-getWatchlist(user) {
-  $.get("/api/movies/:id" + UserId) function(data) {
-    
-}
-}
-//https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
-
-("#movieSearch")
