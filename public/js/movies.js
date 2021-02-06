@@ -14,7 +14,6 @@ $(document).ready(() => {
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
     }
   });
-<<<<<<< HEAD
 
   // getWatchlist(user) {
   //   $.get("/api/movies/:id" + UserId) function(data) {
@@ -34,9 +33,30 @@ $(document).ready(() => {
       console.log(response);
       let movieTitle = response.results[i].title;
       let moviePoster = response.results[i].poster_path;
+      const movieSearchRes = `<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>`
     });
   });
 });
-=======
+
+$(document).on("click", "#addMovieBtn", handleMovieFormSubmit);
+function handleMovieFormSubmit(event) {
+  event.preventDefault();
+  console.log(movieInput);
+  if (!movieInput.val().trim().trim()) {
+    return;
+  }
+  uploadMovie({
+    name: movieInput.val().trim(),
+    watched: "false"
+  });
+}
+function uploadMovie(movieData) {
+  $.post("/api/movies", movieData);
+}
 });
->>>>>>> main

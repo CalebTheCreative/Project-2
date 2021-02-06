@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true
     },
-    watched: DataTypes.BOOLEAN
+    watched: DataTypes.BOOLEAN,
+    tmdbID: DataTypes.INTEGER
   });
 
   Movies.associate = function(models) {
