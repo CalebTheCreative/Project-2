@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  const movieInput = $("#addMovie");
   const apiKey = "715a8e5a66ff527f09cba3f681f691f2";
   let queryURL = "";
   let imgURL = "https://image.tmdb.org/t/p/w500";
@@ -13,4 +14,26 @@ $(document).ready(() => {
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
     }
   });
+
+  $(document).on("click", "#addMovieBtn", handleMovieFormSubmit);
+
+  function handleMovieFormSubmit(event) {
+    event.preventDefault();
+    const globalUserId = $(".member-name").data("id");
+    console.log(globalUserId);
+
+    console.log(movieInput);
+    if (!movieInput.val().trim().trim()) {
+      return;
+    }
+    uploadMovie({
+      name: movieInput.val().trim(),
+      watched: "false",
+      UserId: globalUserId
+    });
+  }
+
+  function uploadMovie(movieData) {
+    $.post("/api/movies", movieData);
+  }
 });
