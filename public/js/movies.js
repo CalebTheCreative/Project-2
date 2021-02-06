@@ -14,6 +14,7 @@ $(document).ready(() => {
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
     }
   });
+<<<<<<< HEAD
 
   // getWatchlist(user) {
   //   $.get("/api/movies/:id" + UserId) function(data) {
@@ -36,3 +37,6 @@ $(document).ready(() => {
     });
   });
 });
+=======
+});
+>>>>>>> main

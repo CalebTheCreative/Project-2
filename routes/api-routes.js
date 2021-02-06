@@ -24,38 +24,36 @@ module.exports = function(app) {
       });
   });
 
-  app.get("/api/movies/:id", (req, res) => {
-    db.Movies.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.User]
+  app.get("/api/movies", (req, res) => {
+    const query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.Movies.findAll({
+      where: query,
+      include: [db.Movies]
     }).then(dbMovies => {
       res.json(dbMovies);
     });
   });
 
-  app.get("/api/boards", (req, res) => {
-    const query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    db.Board.findAll({
-      where: query,
-      include: [db.Board]
-    }).then(dbBoard => {
-      res.json(dbBoard);
+  app.put("/api/movies", (req, res) => {
+    db.Movies.update(req.body, {
+      where: {
+        watched: req.body.id
+      }
+    }).then(dbMovies => {
+      res.json(dbMovies);
     });
   });
 
-  app.get("/api/boards/:id", (req, res) => {
-    db.Board.findOne({
+  app.delete("/api/movies/:id", (req, res) => {
+    db.Movies.destroy({
       where: {
         id: req.params.id
-      },
-      include: [db.User]
-    }).then(dbBoard => {
-      res.json(dbBoard);
+      }
+    }).then(dbMovies => {
+      res.json(dbMovies);
     });
   });
 
@@ -64,6 +62,8 @@ module.exports = function(app) {
     req.logout();
     res.redirect("/");
   });
+  
+  //********************Post Requests******************************/
 
   //Post route for saving a new boardgame
   app.post("/api/boards", (req, res) => {
@@ -108,3 +108,37 @@ module.exports = function(app) {
     }
   });
 };
+
+// app.get("/api/boards", (req, res) => {
+//   const query = {};
+//   if (req.query.user_id) {
+//     query.UserId = req.query.user_id;
+//   }
+//   db.Board.findAll({
+//     where: query,
+//     include: [db.Board]
+//   }).then(dbBoard => {
+//     res.json(dbBoard);
+//   });
+// });
+
+// app.put("/api/movies", (req, res) => {
+//   db.Movies.update(
+//     req.body,
+//     {
+//       where: {
+//         watched: req.body.id
+//       }
+//     }).then(function(dbMov)
+// })
+
+// app.get("/api/boards/:id", (req, res) => {
+//   db.Board.findOne({
+//     where: {
+//       id: req.params.id
+//     },
+//     include: [db.User]
+//   }).then(dbBoard => {
+//     res.json(dbBoard);
+//   });
+// });
