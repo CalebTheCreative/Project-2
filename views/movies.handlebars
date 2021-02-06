@@ -18,7 +18,6 @@
   <div class="text-block">
     <div class="row">
 
-      {{!-- Add Movie Form --}}
       <div class="col-md-12 mt-4 text-center">
         <h4 class="text-center mt-2 addshade">Welcome <span data-id="" class="member-name addshade"></span></h4>
         <h3 class="addshade">Add a movie to the list:</h3>
@@ -29,13 +28,61 @@
             <input type="hidden" name="watched" value="0">
           </div>
 
-          <button class="btn btn-primary mt-1" id="addMovieBtn">Add your movie</button>
-        </form>
+        {{!-- Search For Movie --}}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#exampleModalCenter">
+          Search for a movie
+        </button><br />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-primary">
+                <h5 class="modal-title" id="exampleModalLongTitle">Movie Search</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="addMovie">
+                  <div class="form-group">
+                    <label for="addMovie" class="text-dark">Title of Movie:</label>
+                    <input type="text" id="addMovie" name="name">
+                    <input type="hidden" name="watched" value="0">
+                  </div>
+
+                  <button class="btn btn-warning text-light mt-1" id="searchMovieBtn">Search</button>
+                </form>
+                <hr class="my-3 text-dark" />
+                <h3 class="text-dark">Results:</h3>
+                <ul class="list-group">
+                  
+                  {{#each movieResults}}
+                  <li class="list-group-item text-dark" id="MovieTitle">{{MovieTitle}}
+                    <span>
+                      (<span id="MovieYear">{{MovieYear}}</span>)
+                      <span>
+                        <button class="btn btn-warning text-light btn-sm" id="addMovieBtn">Add to watchlist</button>
+                      </span>
+                    </span>
+                  </li>
+                  {{/each}}
+
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#exampleModal">
           View your watchlist
-        </button><br/>
+        </button><br />
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -49,10 +96,19 @@
                 </button>
               </div>
               <div class="modal-body">
+                <h4 class="text-dark">Watchlist</h4>
                 <ul>
                   {{#each movies}}
                   {{#unless watched}}
                   {{> movies/movie-block watched=false}}
+                  {{/unless}}
+                  {{/each}}
+                </ul>
+                <h4 class="text-dark">Already watched</h4>
+                <ul>
+                  {{#each movies}}
+                  {{#unless watched}}
+                  {{> movies/movie-block watched=true}}
                   {{/unless}}
                   {{/each}}
                 </ul>
