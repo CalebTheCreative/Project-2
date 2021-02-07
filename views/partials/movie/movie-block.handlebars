@@ -1,7 +1,13 @@
 <li>
     {{id}}. {{name}}
 
+    {{#if watch}}
     <button class="change-watched" data-id="{{id}}" data-newwatched="{{watch}}">
-        {{#if watch}}See it!{{else}}Make burger again{{/if}}
+        Add back to watchlist!
+    </button>
+    {{/if}}
+
+    <button class="delete-movie" data-id="{{id}}" data-newwatched="{{watch}}">
+        {{#if watch}}Remove!{{else}}Remove
     </button>
 </li>
