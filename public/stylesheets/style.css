@@ -1,17 +1,41 @@
-form.signup,
-form.login {
-  margin-top: 50px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
+/* =============== Credential Pages =============== */
+form.signup,
+form.login {
+  margin-top: 20px;
+}
+
+#email-input {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 5px solid #04a3ff;
+}
+
+#password-input {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 5px solid #04a3ff;
+}
+
+#credLogo {
+  width: 50%;
+  height: auto;
+}
+
+/* =============== Members Page =============== */
 .mainBtn {
   margin-top: 2px;
   margin-bottom: 2px;
   width: 3.5in;
 }
 
-.jumbotron {
-  background-color: black;   
-}
+/* =============== Carousel =============== */
 .active > img {
   margin: 0 auto;
   margin-top: 2rem;
@@ -24,6 +48,8 @@ form.login {
 .carousel-item{
 transition: transform .002s ease, opacity .1s  step-end;
 }
+
+
 .addwatchlist {
   margin: 0 auto;
   align-content: center;
@@ -36,10 +62,7 @@ transition: transform .002s ease, opacity .1s  step-end;
   height: auto;
 }
 
-#mainBGpic {
-  width: 100%;
-  height: auto;
-}
+
 
 .container {
   position: relative;
@@ -49,7 +72,7 @@ transition: transform .002s ease, opacity .1s  step-end;
   position: absolute;
   left: 50px;
   right: 50px;
-  top: 150px;
+  top: 100px;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -74,4 +97,78 @@ transition: transform .002s ease, opacity .1s  step-end;
   left: 55px;
   width: 40%;
   height: auto;
+}
+
+.stayBlueBG {
+  color: rgb(4, 163, 255);
+  background-color: rgb(4, 163, 255);
+  border-color: rgb(4, 163, 255);
+}
+
+.credCont {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 600px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+/* =============== Background Image =============== */
+.mainBGpic {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: cover;
+}
+
+/* =============== Error Message =============== */
+#alert {
+  height: 20px;
+  margin-top: 1em;
+  color: white !important;
+  background-color: transparent !important;
+  border-color: transparent;
+}
+
+.msg {
+  position: absolute;
+  top: 5px;
+  left: auto;
+  right: auto;
+  color: yellow !important;
+}
+
+/* =============== Links =============== */
+a:link {
+  text-decoration: none;
+}
+
+/* =============== Make Blue =============== */
+.text-info {
+  color: #04a3ff !important;
+}
+
+.makeBlueText {
+  color: #04a3ff !important;
+}
+
+.btn-info{
+ 
+  background-color: #04a3ff !important;
+   
+  color:#FFF;
+   
+  border-color: #024870 !important;
+   
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color:#024870 !important;
+     
+  color:#FFF;
+     
+  border-color: #01283f !important;
+     
 }
