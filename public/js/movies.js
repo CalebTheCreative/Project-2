@@ -21,7 +21,7 @@ $(document).ready(() => {
   // }
   // }
 
-  $("#addMovieBtn").on("click", event => {
+  $("#searchMovieBtn").on("click", event => {
     event.preventDefault();
     const movieSearch = $("#addMovie").val();
     console.log(movieSearch);
@@ -31,24 +31,32 @@ $(document).ready(() => {
       method: "GET"
     }).then(response => {
       console.log(response);
-      let movieTitle = response.results[i].title;
-      let moviePoster = response.results[i].poster_path;
-      const movieSearchRes = `<ul>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-</ul>`
+      const results = response.results;
+      const movieTitle = results[i].title;
+      const moviePoster = results[i].poster_path;
+      const movieReleaseDate = results[i].poster_path;
+      const MovieResults = {
+        MovieTitle: movieTitle,
+        MovieYear: movieReleaseDate
+      };
+      res.render("movies",{movies:movies});
+      //   for (let i = 0; i < results.length; i++) {
+
+      // });
+    });
     });
   });
 });
-
 $(document).on("click", "#addMovieBtn", handleMovieFormSubmit);
 function handleMovieFormSubmit(event) {
   event.preventDefault();
   console.log(movieInput);
-  if (!movieInput.val().trim().trim()) {
+  if (
+    !movieInput
+      .val()
+      .trim()
+      .trim()
+  ) {
     return;
   }
   uploadMovie({
@@ -56,7 +64,6 @@ function handleMovieFormSubmit(event) {
     watched: "false"
   });
 }
-function uploadMovie(movieData) {
-  $.post("/api/movies", movieData);
-}
-});
+// function uploadMovie(movieData){
+//   $.post("/api/movies", movieData){}
+// }
