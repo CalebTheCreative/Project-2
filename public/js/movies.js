@@ -1,5 +1,6 @@
 $(document).ready(() => {
   const movieInput = $("#addMovie");
+  console.log(movieInput);
   const apiKey = "715a8e5a66ff527f09cba3f681f691f2";
   let queryURL = "";
   let imgURL = "https://image.tmdb.org/t/p/w500";
@@ -15,7 +16,7 @@ $(document).ready(() => {
     }
   });
 
-  $(document).on("click", "#addMovieBtn", handleMovieFormSubmit);
+  $(document).on("click", "#searchMovieBtn", handleMovieFormSubmit);
 
   function handleMovieFormSubmit(event) {
     event.preventDefault();
