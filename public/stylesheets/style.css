@@ -115,6 +115,16 @@ transition: transform .002s ease, opacity .1s  step-end;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
 }
 
+.mainCont {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 600px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
 /* =============== Background Image =============== */
 .mainBGpic {
   width: 100%;
