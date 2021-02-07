@@ -14,7 +14,7 @@
 </nav>
 
 <div class="w-100">
-  <img src="/img/popcorn-bg.jpg" id="mainBGpic" />
+  <img src="/img/popcorn-bg.jpg" class="mainBGpic" />
   <div class="text-block">
     <div class="row">
 
@@ -58,7 +58,7 @@
                 <hr class="my-3 text-dark" />
                 <h3 class="text-dark">Results:</h3>
                 <ul class="list-group">
-                  
+
                   {{#each movieResults}}
                   <li class="list-group-item text-dark" id="MovieTitle">{{MovieTitle}}
                     <span>
@@ -79,6 +79,7 @@
           </div>
         </div>
 
+        {{!-- View Watch List --}}
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#exampleModal">
           View your watchlist
@@ -107,9 +108,9 @@
                 <h4 class="text-dark">Already watched</h4>
                 <ul>
                   {{#each movies}}
-                  {{#unless watched}}
+                  {{#if watched}}
                   {{> movies/movie-block watched=true}}
-                  {{/unless}}
+                  {{/if}}
                   {{/each}}
                 </ul>
               </div>
@@ -121,11 +122,13 @@
           </div>
         </div>
 
+        {{!-- Decide a Movie For Me --}}
         <button class="btn btn-primary mt-1" id="decideMovieBtn">Decide a movie for me!</button>
       </div>
 
     </div><!-- /.row -->
 
+    {{!-- Carousel Row --}}
     <div class="row">
 
       <!-- Most Popular -->
