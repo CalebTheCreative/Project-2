@@ -50,6 +50,16 @@ $(document).ready(() => {
     }
   });
 
+  $(document).on("click", "#watchlistBtn", handleMovieWatchlist);
+  function handleMovieWatchlist() {
+    $.ajax({
+      url: "/api/movies",
+      method: "GET"
+    }).done(function (response){
+      console.log(response);
+    });
+  }
+
   $("#searchMovieBtn").click(event => {
     event.preventDefault();
     const movieInput = $("#addMovie")

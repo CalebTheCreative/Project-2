@@ -23,15 +23,9 @@
     <div class="row">
 
       <div class="col-md-12 mt-4 text-center">
-<<<<<<< HEAD
-        <h4 class="text-center mt-2 addshade">Welcome <span data-id="" class="member-name addshade"></span></h4>
-        
-              
-=======
 
         <h4 class="text-center mt-2 addshade d-none">Welcome <span data-id="" class="member-name d-none"></span></h4>
 
->>>>>>> main
 
         {{!-- Search For Movie --}}
         <!-- Button trigger modal -->
@@ -61,29 +55,14 @@
                   <button class="btn btn-warning text-light mt-1" id="searchMovieBtn">Search</button>
                 </form>
                 <hr class="my-3 text-dark" />
-<<<<<<< HEAD
-                <h3 class="text-dark">Results:</h3>                
-                <ul class="list-group-item text-dark">     
-                  <div id="resultsContainer">
-                    <div id = "addMovieBtn"></div>
-                  </div>               
-                </ul>
-                
-                <!-- <ul class="list-group">
-=======
                 <h3 class="text-dark">Results:</h3>
                 <ul class="list-group-item text-dark">
                   <div id="resultsContainer">
                   </div>
                 </ul>
->>>>>>> main
 
                 {{!-- <ul class="list-group">
                   {{#each movieResults}}
-<<<<<<< HEAD
-=======
-
->>>>>>> main
                   <li class="list-group-item text-dark" id="MovieTitle">{{title}}
                     <span>
                       (<span id="MovieYear">{{releaseDate}}</span>)
@@ -94,11 +73,7 @@
                   </li>
                   {{/each}}
 
-<<<<<<< HEAD
-                </ul> -->
-=======
                 </ul> --}}
->>>>>>> main
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -130,28 +105,13 @@
                   {{#each movies}}
                   {{#unless this.dataValues.watched}}
                   <li>
-<<<<<<< HEAD
-                  {{> movies/movie-block watched=true}}
-=======
                     {{> movies/movie-block watched=true}}
->>>>>>> main
                   </li>
                   {{/unless}}
                   {{/each}}                  
                 </ul>
 
                 <h4 class="text-dark">Already watched</h4>
-<<<<<<< HEAD
-                <!-- <ul>
-                  {{#each name}}
-                  {{#if watched}}
-                  <li>
-                  {{> movies/movie-block watched=true}}
-                  </li>
-                  {{/if}}
-                  {{/each}}
-                </ul> -->
-=======
                 {{!-- <ul>
                   {{#each name}}
                   {{#if this.dataValues.watched}}
@@ -161,7 +121,6 @@
                   {{/if}}
                   {{/each}}
                 </ul> --}}
->>>>>>> main
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
