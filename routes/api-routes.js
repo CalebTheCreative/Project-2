@@ -24,38 +24,51 @@ module.exports = function(app) {
       });
   });
 
-  // app.get("/api/movies", (req, res) => {
-  //   const query = {};
-  //   if (req.query.user_id) {
-  //     query.UserId = req.query.user_id;
-  //   }
-  //   db.Movies.findAll({
-  //     where: query,
-  //     include: [db.Movies]
-  //   }).then(dbMovies => {
-  //     res.json(dbMovies);
+  app.get("/api/movies", (req, res) => {
+    const query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.Movies.findAll({
+      where: query,
+      include: [db.Movies]
+    }).then(dbMovies => {
+      res.render("movies", dbMovies);
+    });
+  });
+
+  // app.get("/api/movies/", (req, res) => {
+  //   movies.all(function(data) {
+  //     var hbsObject = {
+  //       movies: data
+  //     };
+  //     console.log(hbsObject);
+  //     res.render("movies", hbsObject);
   //   });
   // });
 
-  // app.put("/api/movies", (req, res) => {
-  //   db.Movies.update(req.body, {
-  //     where: {
-  //       watched: req.body.id
-  //     }
-  //   }).then(dbMovies => {
-  //     res.json(dbMovies);
-  //   });
-  // });
 
-  // app.delete("/api/movies/:id", (req, res) => {
-  //   db.Movies.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(dbMovies => {
-  //     res.json(dbMovies);
-  //   });
-  // });
+
+
+  app.put("/api/movies", (req, res) => {
+    db.Movies.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(dbMovies => {
+      res.json(dbMovies);
+    });
+  });
+
+  app.delete("/api/movies/:id", (req, res) => {
+    db.Movies.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbMovies => {
+      res.json(dbMovies);
+    });
+  });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {

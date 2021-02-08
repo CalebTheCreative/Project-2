@@ -50,13 +50,19 @@
                   <button class="btn btn-warning text-light mt-1" id="searchMovieBtn">Search</button>
                 </form>
                 <hr class="my-3 text-dark" />
-                <h3 class="text-dark">Results:</h3>
-                <ul class="list-group">
+                <h3 class="text-dark">Results:</h3>                
+                <ul class="list-group-item text-dark">     
+                  <div id="resultsContainer">
+                    <div id = "addMovieBtn"></div>
+                  </div>               
+                </ul>
+                
+                <!-- <ul class="list-group">
 
                   {{#each movieResults}}
-                  <li class="list-group-item text-dark" id="MovieTitle">{{MovieTitle}}
+                  <li class="list-group-item text-dark" id="MovieTitle">{{title}}
                     <span>
-                      (<span id="MovieYear">{{MovieYear}}</span>)
+                      (<span id="MovieYear">{{releaseDate}}</span>)
                       <span>
                         <button class="btn btn-warning text-light btn-sm" id="addMovieBtn">Add to watchlist</button>
                       </span>
@@ -64,7 +70,7 @@
                   </li>
                   {{/each}}
 
-                </ul>
+                </ul> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
