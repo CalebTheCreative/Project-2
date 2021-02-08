@@ -59,18 +59,6 @@ form.login {
   width: 100%;
 }
 
-#headerLogo {
-  position: relative;
-  left: 35px;
-  top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 15%;
-  height: auto;
-}
-
-
-
 .container {
   position: relative;
 }
@@ -79,7 +67,7 @@ form.login {
   position: absolute;
   left: 50px;
   right: 50px;
-  top: 100px;
+  top: 35%;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -196,12 +184,20 @@ a:link {
   left: 20px;
 }
 
-#headerMovLogo {
+#headerActLogo {
   position: fixed;
   width: 8%;
   height: auto;
   top: 10px;
   left: 46%;
+}
+
+#headerMainLogo {
+  position: fixed;
+  width: 20%;
+  height: auto;
+  left: 40%;
+  top: 10px;
 }
 
 #prevPgBtn, #logoutBtn {
