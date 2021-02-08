@@ -35,13 +35,14 @@ module.exports = function(app) {
     }).then(dbMovies => {
       console.log(dbMovies);
       let hbsObject = {
-        name: dbMovies
+        movies: dbMovies
       };
       console.log(hbsObject);
-      //res.render("movies", hbsObject);
+      res.render("movies", hbsObject);
     });
   });
 
+  
   // app.get("/api/movies/", (req, res) => {
   //   db.Movies.findAll({
 

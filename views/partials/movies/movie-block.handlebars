@@ -1,11 +1,6 @@
- {{this.id}}. {{this.name}}
+ {{this.dataValues.id}}. {{this.dataValues.name}}
 
     
     <button type = "button" class="change-watched" data-id="{{id}}" data-newwatched ="{{watched}}">
-       {{#if watched}} Add to watched {{else}} Watch again {{/if}}
+       {{#if this.dataValues.watched}} Add to watched {{else}} Watch again {{/if}}
     </button>
-    
-
-    <!-- <button class="delete-movie" data-id="{{id}}" data-newwatched="{{watched}}">
-        {{#if watched}}Remove!{{else}}Remove
-    </button> -->
