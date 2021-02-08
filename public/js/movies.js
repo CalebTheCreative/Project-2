@@ -55,7 +55,7 @@ $(document).ready(() => {
     $.ajax({
       url: "/api/movies",
       method: "GET"
-    }).done(function (response){
+    }).done(response => {
       console.log(response);
     });
   }
@@ -151,7 +151,7 @@ $(document).ready(() => {
 
 //function to change watched status
 $(() => {
-  $(".change-watched").on("click", function (event) {
+  $(".change-watched").on("click", function() {
     const id = $(this).data("id");
     const newWatched = $(this).data("newwatched");
 
@@ -169,7 +169,7 @@ $(() => {
   });
 
   //function to delete
-  $(".delete-movie").on("click", function (event) {
+  $(".delete-movie").on("click", function() {
     const id = $(this).data("id");
 
     $.ajax("/api/movies/" + id, {

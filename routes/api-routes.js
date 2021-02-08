@@ -34,7 +34,7 @@ module.exports = function(app) {
       where: query
     }).then(dbMovies => {
       console.log(dbMovies);
-      let hbsObject = {
+      const hbsObject = {
         movies: dbMovies
       };
       console.log(hbsObject);
@@ -42,7 +42,6 @@ module.exports = function(app) {
     });
   });
 
-  
   // app.get("/api/movies/", (req, res) => {
   //   db.Movies.findAll({
 
@@ -184,7 +183,6 @@ module.exports = function(app) {
 //   });
 // });
 
-
 // app.get("/api/movies", (req, res) => {
 //   const query = {};
 //   if (req.query.user_id) {
@@ -196,7 +194,7 @@ module.exports = function(app) {
 //   }).then(dbMovies => {
 //     console.log(dbMovies);
 //     for (i = 0; i < dbMovies.length; i++){
-//       let hbsObject = 
+//       let hbsObject =
 //     }
 //     let hbsObject = {
 //       name: dbMovies.name,
