@@ -12,10 +12,9 @@
 </nav>
 <div>
   <a class="text-center" href="/members">
-    <img src="/img/stay-in-logo.png" id="headerActLogo" />
+    <img src="/img/stay-in-logo.png" id="headerMovLogo" />
   </a>
 </div>
-
 <div class="w-100">
   <img src="/img/popcorn-bg.jpg" class="mainBGpic" />
   <div class="text-block">
@@ -28,8 +27,8 @@
 
         {{!-- Search For Movie --}}
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg mt-1" data-toggle="modal" data-target="#exampleModalCenter">
-          <span><i class="fas fa-search"></i></span> Search for a movie
+        <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#exampleModalCenter">
+          Search for a movie
         </button><br />
 
         <!-- Modal -->
@@ -62,7 +61,6 @@
 
                 {{!-- <ul class="list-group">
                   {{#each movieResults}}
-
                   <li class="list-group-item text-dark" id="MovieTitle">{{title}}
                     <span>
                       (<span id="MovieYear">{{releaseDate}}</span>)
@@ -72,7 +70,6 @@
                     </span>
                   </li>
                   {{/each}}
-
                 </ul> --}}
               </div>
               <div class="modal-footer">
@@ -84,8 +81,8 @@
 
         {{!-- View Watch List --}}
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg mt-1" data-toggle="modal" data-target="#exampleModal">
-          <span><i class="fas fa-list"></i></span> View your watchlist
+        <button type="button" class="btn btn-primary mt-1" id = "watchlistBtn" data-toggle="modal" data-target="#exampleModal">
+          View your watchlist
         </button><br />
 
         <!-- Modal -->
@@ -101,26 +98,26 @@
               </div>
               <div class="modal-body">
                 <h4 class="text-dark">Watchlist</h4>
-                <ul>
+                <ul>                  
                   {{#each movies}}
                   {{#unless this.dataValues.watched}}
                   <li>
-                    {{> movies/movie-block watched=true}}
+                    {{> movies/movie-block watched=false}}
                   </li>
                   {{/unless}}
-                  {{/each}}
+                  {{/each}}                  
                 </ul>
 
                 <h4 class="text-dark">Already watched</h4>
-                {{!-- <ul>
-                  {{#each name}}
+                <ul>
+                  {{#each movies}}
                   {{#if this.dataValues.watched}}
                   <li>
                     {{> movies/movie-block watched=true}}
                   </li>
                   {{/if}}
                   {{/each}}
-                </ul> --}}
+                </ul>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -131,9 +128,7 @@
         </div>
 
         {{!-- Decide a Movie For Me --}}
-        <button class="btn btn-primary btn-lg mt-1" id="decideMovieBtn">
-          <span><i class="fas fa-film"></i></span> Decide a movie for me!
-          </button>
+        <button class="btn btn-primary mt-1" id="decideMovieBtn">Decide a movie for me!</button>
       </div>
 
     </div><!-- /.row -->

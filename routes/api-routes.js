@@ -24,45 +24,63 @@ module.exports = function(app) {
       });
   });
 
-  // app.get("/api/movies", (req, res) => {
-  //   const query = {};
-  //   if (req.query.user_id) {
-  //     query.UserId = req.query.user_id;
-  //   }
+  app.get("/api/movies", (req, res) => {
+    const query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    console.log(query);
+    db.Movies.findAll({
+      where: query
+    }).then(dbMovies => {
+      console.log(dbMovies);
+      let hbsObject = {
+        movies: dbMovies
+      };
+      console.log(hbsObject);
+      res.render("movies", hbsObject);
+    });
+  });
+
+  
+  // app.get("/api/movies/", (req, res) => {
   //   db.Movies.findAll({
-  //     where: query,
-  //     include: [db.Movies]
-  //   }).then(dbMovies => {
-  //     res.json(dbMovies);
+
+  //     var hbsObject = {
+  //       name: data.name,
+  //       watched: data.watched
+  //     };
+  //     console.log(hbsObject);
+  //     res.render("movies", hbsObject);
   //   });
   // });
 
-  // app.put("/api/movies", (req, res) => {
-  //   db.Movies.update(req.body, {
-  //     where: {
-  //       watched: req.body.id
-  //     }
-  //   }).then(dbMovies => {
-  //     res.json(dbMovies);
-  //   });
-  // });
+  app.put("/api/movies", (req, res) => {
+    db.Movies.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(dbMovies => {
+      res.json(dbMovies);
+    });
+  });
 
-  // app.delete("/api/movies/:id", (req, res) => {
-  //   db.Movies.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(dbMovies => {
-  //     res.json(dbMovies);
-  //   });
-  // });
+  app.delete("/api/movies/:id", (req, res) => {
+    db.Movies.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbMovies => {
+      res.json(dbMovies);
+    });
+  });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
-  
+
   //********************Post Requests******************************/
 
   //Post route for saving a new boardgame
@@ -143,9 +161,48 @@ module.exports = function(app) {
 //   });
 // });
 
-  //Post route for saving a new movie
-  // app.post("/api/movies", (req, res) => {
-  //   db.Movies.create(req.body).then(dbMovies => {
-  //     res.json(dbMovies);
-  //   });
-  // });
+//Post route for saving a new movie
+// app.post("/api/movies", (req, res) => {
+//   db.Movies.create(req.body).then(dbMovies => {
+//     res.json(dbMovies);
+//   });
+// });
+
+// app.get("/api/movies", (req, res) => {
+//   const query = {};
+//   if (req.query.user_id) {
+//     query.UserId = req.query.user_id;
+//   }
+//   db.Movies.findAll({
+//     where: query
+//   }).then(dbMovies => {
+//     let hbsObject = {
+//       name: dbMovies.name,
+//       watched: dbMovies.watched
+//     };
+//     res.render("movies", hbsObject);
+//   });
+// });
+
+
+// app.get("/api/movies", (req, res) => {
+//   const query = {};
+//   if (req.query.user_id) {
+//     query.UserId = req.query.user_id;
+//   }
+//   console.log(query);
+//   db.Movies.findAll({
+//     where: query
+//   }).then(dbMovies => {
+//     console.log(dbMovies);
+//     for (i = 0; i < dbMovies.length; i++){
+//       let hbsObject = 
+//     }
+//     let hbsObject = {
+//       name: dbMovies.name,
+//       watched: dbMovies.watched
+//     };
+//     console.log(hbsObject);
+//     res.render("movies", hbsObject);
+//   });
+// });
