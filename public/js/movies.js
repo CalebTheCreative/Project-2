@@ -1,3 +1,5 @@
+// Oscar update 110pm Mon
+
 $(document).ready(() => {
   //const movieInput = $("#addMovie");
   //console.log(movieInput);
@@ -12,7 +14,39 @@ $(document).ready(() => {
     const results = response.results;
     for (let i = 0; i < results.length; i++) {
       imgURL = `https://image.tmdb.org/t/p/w500${results[i].poster_path}`;
+      const popTitle = results[i].title;
+
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
+      // ===================
+      // Pop Code
+      $(`#popAddWatchList${i}`).on("click", handlePopMovieFormSubmit);
+      //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
+
+      function handlePopMovieFormSubmit(event) {
+        event.preventDefault();
+        const globalPopUserId = $(".member-name").data("id");
+        // const globalMovie = $(this).parent().text();
+        console.log("------");
+        console.log(popTitle);
+        console.log(globalPopUserId);
+        console.log("------");
+
+        uploadMovie({
+          // name: movieInput.val().trim(),
+          name: popTitle,
+          watched: "false",
+          UserId: globalPopUserId
+        });
+      }
+      function uploadMovie(movieData) {
+        $.post("/api/movies", movieData);
+      }
+      // ===================
+
+      console.log(results[i].title);
+      // let popTitle = results[i].title;
+      // console.log(poptitle);
+      // $(`popAddWatchList${i}`).click(handleMovieFormSubmit);
     }
   });
 
@@ -37,63 +71,77 @@ $(document).ready(() => {
         const title = resultsArr[i].title;
         const releaseDate = resultsArr[i].release_date;
         const titleEl = $(
-          "<li class = 'list-group-item text-dark'><p id='MovieTitle'>" +
-            title +
-            "</p><span id='MovieYear'>" +
-            releaseDate +
-            "</span></li>"
+          `<li class = 'list-group-item text-dark'><p id='MovieTitle${i}'>${title}</p><span id='MovieYear'>${releaseDate}</span></li>`
         );
         const buttonEl = $(
-          "<button><i class = 'fas fa-heart'" +
-            "data-index=" +
-            i +
-            "></i></button>"
+          `<button><i class = 'fas fa-heart' data-index=${i}></i></button>`
         );
-        buttonEl.attr("class", "button addMovieBtn");
+        buttonEl.attr("class", "btn");
+        buttonEl.attr("id", `addMovieBtn${i}`);
         buttonEl.attr("data-index", i);
         $("#resultsContainer").append(titleEl);
         $("#resultsContainer").append(buttonEl);
       }
+
+      for (let i = 0; i < resultsArr.length; i++) {
+        $(document).on("click", `#addMovieBtn${i}`, handleMovieFormSubmit);
+        //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
+
+        function handleMovieFormSubmit(event) {
+          event.preventDefault();
+          const globalUserId = $(".member-name").data("id");
+          const globalMovie = $(`#MovieTitle${i}`).text();
+          // const globalMovie = $(this).parent().text();
+          console.log(globalMovie);
+          console.log(globalUserId);
+
+          uploadMovie({
+            // name: movieInput.val().trim(),
+            name: globalMovie,
+            watched: "false",
+            UserId: globalUserId
+          });
+        }
+        function uploadMovie(movieData) {
+          $.post("/api/movies", movieData);
+        }
+
+        $(document).on(
+          "click",
+          `#popAddWatchList${i}`,
+          handlePopMovieFormSubmit
+        );
+        //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
+
+        function handlePopMovieFormSubmit(event) {
+          event.preventDefault();
+
+          const globalUserId = $(".member-name").data("id");
+          const globalMovie = $(`#MovieTitle${i}`).text();
+          // const globalMovie = $(this).parent().text();
+          console.log(globalMovie);
+          console.log(globalUserId);
+
+          uploadMovie({
+            // name: movieInput.val().trim(),
+            name: globalMovie,
+            watched: "false",
+            UserId: globalUserId
+          });
+        }
+        function uploadMovie(movieData) {
+          $.post("/api/movies", movieData);
+        }
+      }
+
       return;
     });
   });
 });
-//uh change class below?
-$(document).on("click", ".addMovieBtn", handleMovieFormSubmit);
-$(document).on("click", "#watchlistBtn", handleMovieWatchlist);
-//$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
 
-function handleMovieFormSubmit(event) {
-  event.preventDefault();
-  const globalUserId = $(".member-name").data("id");
-  const globalMovie = $("#MovieTitle").text();
-  // const globalMovie = $(this).parent().text();
-  console.log(globalMovie);
-  console.log(globalUserId);
-  uploadMovie({
-    // name: movieInput.val().trim(),
-    name: globalMovie,
-    watched: "false",
-    UserId: globalUserId
-  });
-}
-
-function uploadMovie(movieData) {
-  $.post("/api/movies", movieData);
-}
-
-function handleMovieWatchlist() {
-  $.ajax({
-    url: "/api/movies",
-    method: "GET"
-  }).done(function (response){
-    console.log(response);
-  });
-};
-
-//function to change watched status
+// function to change watched status
 // $(() => {
-//   $(".change-watched").on("click", function(event) {
+//   $(".change-watched").on("click", function (event) {
 //     const id = $(this).data("id");
 //     const newWatched = $(this).data("newwatched");
 
@@ -110,7 +158,7 @@ function handleMovieWatchlist() {
 //     });
 //   });
 //   //function to delete
-//   $(".delete-movie").on("click", function(event) {
+//   $(".delete-movie").on("click", function (event) {
 //     const id = $(this).data("id");
 
 //     $.ajax("/api/movies/" + id, {
@@ -126,12 +174,12 @@ function handleMovieWatchlist() {
 // buttonEl.attr('class', 'button favoriteButton');
 // buttonEl.attr("data-index", i)
 
-//const results = response.results;
-//const data = { movies: [] };
-//for (let i = 0; i < results.length; i++) {
-// const currentTitle = {
-//  title: results[i].title,
-// releaseDate: results[i].release_date
-//};
-//data.movies.push(currentTitle);
-//$("#movieResults")
+// const results = response.results;
+// const data = { movies: [] };
+// for (let i = 0; i < results.length; i++) {
+//   const currentTitle = {
+//     title: results[i].title,
+//     releaseDate: results[i].release_date
+//   };
+//   data.movies.push(currentTitle);
+//   $("#movieResults")
