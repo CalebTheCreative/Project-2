@@ -105,22 +105,22 @@
                   {{#each movies}}
                   {{#unless this.dataValues.watched}}
                   <li>
-                    {{> movies/movie-block watched=true}}
+                    {{> movies/movie-block watched=false}}
                   </li>
                   {{/unless}}
                   {{/each}}                  
                 </ul>
 
                 <h4 class="text-dark">Already watched</h4>
-                {{!-- <ul>
-                  {{#each name}}
+                <ul>
+                  {{#each movies}}
                   {{#if this.dataValues.watched}}
                   <li>
                     {{> movies/movie-block watched=true}}
                   </li>
                   {{/if}}
                   {{/each}}
-                </ul> --}}
+                </ul>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

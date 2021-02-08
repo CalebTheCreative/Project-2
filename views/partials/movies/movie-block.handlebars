@@ -1,6 +1,6 @@
  {{this.dataValues.id}}. {{this.dataValues.name}}
 
     
-    <button type = "button" class="change-watched" data-id="{{id}}" data-newwatched ="{{watched}}">
-       {{#if this.dataValues.watched}} Add to watched {{else}} Watch again {{/if}}
+    <button type = "button" class="change-watched" data-id="{{this.dataValues.id}}" data-newwatched ="{{this.dataValues.watched}}">
+       {{#if this.dataValues.watched}} Watch Again {{else}} Add to Watchlist {{/if}}
     </button>

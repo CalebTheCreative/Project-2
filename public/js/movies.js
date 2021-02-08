@@ -149,36 +149,37 @@ $(document).ready(() => {
   });
 });
 
-// function to change watched status
-// $(() => {
-//   $(".change-watched").on("click", function (event) {
-//     const id = $(this).data("id");
-//     const newWatched = $(this).data("newwatched");
+//function to change watched status
+$(() => {
+  $(".change-watched").on("click", function (event) {
+    const id = $(this).data("id");
+    const newWatched = $(this).data("newwatched");
 
-//     const newWatchedState = {
-//       watched: newWatched
-//     };
+    const newWatchedState = {
+      watched: newWatched
+    };
 
-//     $.ajax("/api/movies/" + id, {
-//       type: "PUT",
-//       data: newWatchedState
-//     }).then(() => {
-//       console.log("changed watched to", newWatched);
-//       location.reload();
-//     });
-//   });
-//   //function to delete
-//   $(".delete-movie").on("click", function (event) {
-//     const id = $(this).data("id");
+    $.ajax("/api/movies/" + id, {
+      type: "PUT",
+      data: newWatchedState
+    }).then(() => {
+      console.log("changed watched to", newWatched);
+      location.reload();
+    });
+  });
 
-//     $.ajax("/api/movies/" + id, {
-//       type: "DELETE"
-//     }).then(() => {
-//       console.log("deleted movie", id);
-//       location.reload();
-//     });
-//   });
-// });
+  //function to delete
+  $(".delete-movie").on("click", function (event) {
+    const id = $(this).data("id");
+
+    $.ajax("/api/movies/" + id, {
+      type: "DELETE"
+    }).then(() => {
+      console.log("deleted movie", id);
+      location.reload();
+    });
+  });
+});
 
 // let buttonEl = $("<button class = btn btn-warning text-light'data-index='" + i + "></button>")
 // buttonEl.attr('class', 'button favoriteButton');
