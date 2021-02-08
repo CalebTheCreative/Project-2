@@ -29,26 +29,30 @@ module.exports = function(app) {
     if (req.query.user_id) {
       query.UserId = req.query.user_id;
     }
+    console.log(query);
     db.Movies.findAll({
-      where: query,
-      include: [db.Movies]
+      where: query
     }).then(dbMovies => {
-      res.render("movies", dbMovies);
+      console.log(dbMovies);
+      let hbsObject = {
+        name: dbMovies
+      };
+      console.log(hbsObject);
+      //res.render("movies", hbsObject);
     });
   });
 
   // app.get("/api/movies/", (req, res) => {
-  //   movies.all(function(data) {
+  //   db.Movies.findAll({
+
   //     var hbsObject = {
-  //       movies: data
+  //       name: data.name,
+  //       watched: data.watched
   //     };
   //     console.log(hbsObject);
   //     res.render("movies", hbsObject);
   //   });
   // });
-
-
-
 
   app.put("/api/movies", (req, res) => {
     db.Movies.update(req.body, {
@@ -75,7 +79,7 @@ module.exports = function(app) {
     req.logout();
     res.redirect("/");
   });
-  
+
   //********************Post Requests******************************/
 
   //Post route for saving a new boardgame
@@ -156,9 +160,48 @@ module.exports = function(app) {
 //   });
 // });
 
-  //Post route for saving a new movie
-  // app.post("/api/movies", (req, res) => {
-  //   db.Movies.create(req.body).then(dbMovies => {
-  //     res.json(dbMovies);
-  //   });
-  // });
+//Post route for saving a new movie
+// app.post("/api/movies", (req, res) => {
+//   db.Movies.create(req.body).then(dbMovies => {
+//     res.json(dbMovies);
+//   });
+// });
+
+// app.get("/api/movies", (req, res) => {
+//   const query = {};
+//   if (req.query.user_id) {
+//     query.UserId = req.query.user_id;
+//   }
+//   db.Movies.findAll({
+//     where: query
+//   }).then(dbMovies => {
+//     let hbsObject = {
+//       name: dbMovies.name,
+//       watched: dbMovies.watched
+//     };
+//     res.render("movies", hbsObject);
+//   });
+// });
+
+
+// app.get("/api/movies", (req, res) => {
+//   const query = {};
+//   if (req.query.user_id) {
+//     query.UserId = req.query.user_id;
+//   }
+//   console.log(query);
+//   db.Movies.findAll({
+//     where: query
+//   }).then(dbMovies => {
+//     console.log(dbMovies);
+//     for (i = 0; i < dbMovies.length; i++){
+//       let hbsObject = 
+//     }
+//     let hbsObject = {
+//       name: dbMovies.name,
+//       watched: dbMovies.watched
+//     };
+//     console.log(hbsObject);
+//     res.render("movies", hbsObject);
+//   });
+// });

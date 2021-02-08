@@ -98,21 +98,25 @@
               </div>
               <div class="modal-body">
                 <h4 class="text-dark">Watchlist</h4>
-                <ul>
+                <ul>                  
                   {{#each movies}}
                   {{#unless watched}}
-                  {{> movies/movie-block watched=false}}
+                  <li>
+                  {{> movies/movie-block watched=true}}
+                  </li>
                   {{/unless}}
-                  {{/each}}
+                  {{/each}}                  
                 </ul>
                 <h4 class="text-dark">Already watched</h4>
-                <ul>
-                  {{#each movies}}
+                <!-- <ul>
+                  {{#each name}}
                   {{#if watched}}
+                  <li>
                   {{> movies/movie-block watched=true}}
+                  </li>
                   {{/if}}
                   {{/each}}
-                </ul>
+                </ul> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
