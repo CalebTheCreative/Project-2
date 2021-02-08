@@ -9,6 +9,10 @@ form.login {
   margin-top: 20px;
 }
 
+.actNav {
+  position: relative;
+}
+
 #email-input {
   width: 400px;
   margin-left: auto;
@@ -36,19 +40,17 @@ form.login {
 }
 
 /* =============== Carousel =============== */
-.active > img {
+
+#movie-carousel {
   margin: 0 auto;
-  margin-top: 2rem;
+  max-width: 100%;
 }
-#main-carousel{
+
+#movie-slide {
   margin: 0 auto;
   max-width: 250px;
   max-height: 500px;
 }
-.carousel-item{
-transition: transform .002s ease, opacity .1s  step-end;
-}
-
 
 .addwatchlist {
   margin: 0 auto;
@@ -58,7 +60,12 @@ transition: transform .002s ease, opacity .1s  step-end;
 }
 
 #headerLogo {
-  width: 20%;
+  position: relative;
+  left: 35px;
+  top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
   height: auto;
 }
 
@@ -89,7 +96,7 @@ transition: transform .002s ease, opacity .1s  step-end;
 }
 
 .addshade {
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.658);
 }
 
 .navBrandLogo {
@@ -181,4 +188,23 @@ a:link {
      
   border-color: #01283f !important;
      
+}
+
+.mPoster-title {
+  position: relative;
+  bottom: 120px;
+  left: 20px;
+}
+
+#headerMovLogo {
+  position: fixed;
+  width: 8%;
+  height: auto;
+  top: 10px;
+  left: 46%;
+}
+
+#prevPgBtn, #logoutBtn {
+  position: relative;
+  top: 10px;
 }
