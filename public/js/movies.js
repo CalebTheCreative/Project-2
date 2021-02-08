@@ -42,10 +42,8 @@ $(document).ready(() => {
   // function uploadMovie(movieData) {
   //   $.post("/api/movies", movieData);
   // }
-  $("#searchMovieBtn").click((event) => 
-  event.preventDefault(){
-    const movieSource = $("#movie-template").html();
-    const movieList = Handlebars.compile(movieSource);
+  $("#searchMovieBtn").click(event => {
+    event.preventDefault();
     const movieSearch = $("#addMovie").val();
     console.log(movieSearch);
     queryURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieSearch}&page=1&include_adult=false`;
@@ -55,7 +53,9 @@ $(document).ready(() => {
     }).then(response => {
       console.log(response);
       const results = response.results;
-      const data = { movies: [] };
+      const data = {
+        movies: []
+      };
       for (let i = 0; i < results.length; i++) {
         const currentTitle = {
           title: results[i].title,
@@ -63,13 +63,20 @@ $(document).ready(() => {
           release_date: results[i].release_date
         };
         data.movies.push(currentTitle);
-        $("#placeholder").html(
-          movieList({
-            data: data
-          })
-        );
       }
       console.log(data);
+
+      const template = Handlebars.compile(
+        document.getElementById("Template").querySelectorAll()
+      );
+
+      const output = template({
+        data: data
+      });
+
+      console.log(output);
+
+      document.body.innerHTML = output;
     });
   });
 });
