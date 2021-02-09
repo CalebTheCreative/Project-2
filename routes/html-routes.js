@@ -3,6 +3,7 @@
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const { Sequelize } = require("../models");
 var db = require("../models");
 
 
@@ -41,7 +42,15 @@ module.exports = function(app) {
     db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
       dbWatchlist => {
         res.render("movies", { movies: dbWatchlist });
-      });
+      }
+    );
+    db.Movies.findAll({ raw: true, where: { UserId: req.user.id }, order: Sequelize.literal('rand()'), limit: 1 }).then(
+      dbRandomlist =>
+    {
+      console.log(dbRandomlist);
+      res.render("partials/movies/decide-block", { random: dbRandomlist });
+    }
+  );
   });
 
   app.get("/videogames", isAuthenticated, (req, res) => {
@@ -67,4 +76,21 @@ module.exports = function(app) {
 //   db.Movies.findAll({ raw: true }).then(dbWatchlist => {
 //    res.render("movies", { movies: dbWatchlist });
 //   });
+// });
+
+
+// app.get("/movies", isAuthenticated, (req, res) => {
+//   db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+//     dbWatchlist => {
+//       res.render("movies", { movies: dbWatchlist });
+//       return;
+//     }
+//   );
+//   db.Movies.findAll({ raw: true, where: { UserId: req.user.id }, order: Sequelize.literal('rand()'), limit: 1 }).then(
+//     dbRandomlist =>
+//   {
+//     console.log(dbRandomlist);
+//     res.render("movies", { random: dbRandomlist });
+//   }
+// );
 // });
