@@ -38,10 +38,10 @@ module.exports = function(app) {
   });
 
   app.get("/movies", isAuthenticated, (req, res) => {
-    db.Movies.findAll({ raw: true }).then(dbWatchlist => {
-      //console.log(dbWatchlist);
-      res.render("movies", { movies: dbWatchlist });
-    });
+    db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbWatchlist => {
+        res.render("movies", { movies: dbWatchlist });
+      });
   });
 
   app.get("/videogames", isAuthenticated, (req, res) => {
@@ -60,3 +60,11 @@ module.exports = function(app) {
     res.render("bigwheel");
   });
 };
+
+// app.get("/movies", isAuthenticated, (req, res) => {
+//   let userName = req.user.id;
+//   console.log(userName);
+//   db.Movies.findAll({ raw: true }).then(dbWatchlist => {
+//    res.render("movies", { movies: dbWatchlist });
+//   });
+// });
