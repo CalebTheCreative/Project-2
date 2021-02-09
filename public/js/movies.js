@@ -27,10 +27,10 @@ $(document).ready(() => {
         event.preventDefault();
         const globalPopUserId = $(".member-name").data("id");
         // const globalMovie = $(this).parent().text();
-        console.log("------");
-        console.log(popTitle);
-        console.log(globalPopUserId);
-        console.log("------");
+        // console.log("------");
+        // console.log(popTitle);
+        //console.log(globalPopUserId);
+        //console.log("------");
 
         uploadMovie({
           // name: movieInput.val().trim(),
@@ -44,7 +44,7 @@ $(document).ready(() => {
       }
       // ===================
 
-      console.log(results[i].title);
+      // console.log(results[i].title);
       // let popTitle = results[i].title;
       // console.log(poptitle);
       // $(`popAddWatchList${i}`).click(handleMovieFormSubmit);
@@ -68,16 +68,16 @@ $(document).ready(() => {
       .trim();
     let resultsArr = [];
     const queryURL2 = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieInput}&page=1&include_adult=false`;
-    console.log(queryURL2);
-    console.log(movieInput);
+    //console.log(queryURL2);
+    // console.log(movieInput);
     $.ajax({
       url: queryURL2,
       method: "GET"
     }).then(response => {
-      console.log(response);
+      //console.log(response);
       $("#resultsContainer").empty();
       resultsArr = response.results;
-      console.log(resultsArr);
+      //console.log(resultsArr);
       for (let i = 0; i < resultsArr.length; i++) {
         const title = resultsArr[i].title;
         const releaseDate = resultsArr[i].release_date.slice(0, 4); // SLICED TO ONLY INCLUDE YEAR
@@ -103,8 +103,8 @@ $(document).ready(() => {
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
           // const globalMovie = $(this).parent().text();
-          console.log(globalMovie);
-          console.log(globalUserId);
+          // console.log(globalMovie);
+          // console.log(globalUserId);
 
           uploadMovie({
             // name: movieInput.val().trim(),
@@ -130,8 +130,8 @@ $(document).ready(() => {
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
           // const globalMovie = $(this).parent().text();
-          console.log(globalMovie);
-          console.log(globalUserId);
+          //  console.log(globalMovie);
+          // console.log(globalUserId);
 
           uploadMovie({
             // name: movieInput.val().trim(),
@@ -155,18 +155,45 @@ $(() => {
   $(".change-watched").on("click", function() {
     const id = $(this).data("id");
     const newWatched = $(this).data("newwatched");
+    console.log(newWatched);
 
-    const newWatchedState = {
-      watched: newWatched
-    };
+    // eslint-disable-next-line eqeqeq
+    if (newWatched == false) {
+      const newWatchedState = {
+        watched: true
+      };
+      $.ajax("/api/movies/" + id, {
+        type: "PUT",
+        data: newWatchedState
+      }).then(() => {
+        console.log("changed watched to", newWatched);
+        location.reload();
+      });
+    } else {
+      const newWatchedState = {
+        watched: false
+      };
+      console.log(newWatchedState);
+      $.ajax("/api/movies/" + id, {
+        type: "PUT",
+        data: newWatchedState
+      }).then(() => {
+        console.log("changed watched to", newWatched);
+        location.reload();
+      });
+    }
+    // let newWatchedState = {
+    //   watched: newWatched
+    // };
 
-    $.ajax("/api/movies/" + id, {
-      type: "PUT",
-      data: newWatchedState
-    }).then(() => {
-      console.log("changed watched to", newWatched);
-      location.reload();
-    });
+    // console.log(newWatchedState);
+    // $.ajax("/api/movies/" + id, {
+    //   type: "PUT",
+    //   data: newWatchedState
+    // }).then(() => {
+    //   console.log("changed watched to", newWatched);
+    //   //location.reload();
+    // });
   });
 
   //function to delete

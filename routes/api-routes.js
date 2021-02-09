@@ -55,10 +55,22 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.put("/api/movies", (req, res) => {
+  // app.put("/api/movies/:id", (req, res) => {
+  //   console.log(req.params.id);
+  //   db.Movies.update({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (dbWatch){
+  //     res.json(dbWatch)
+  //   });
+  // });
+
+  app.put("/api/movies/:id", (req, res) => {
     db.Movies.update(req.body, {
+      watched: req.body.watched,
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(dbMovies => {
       res.json(dbMovies);
