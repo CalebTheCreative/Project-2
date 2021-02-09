@@ -23,24 +23,24 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
-  app.get("/api/movies", (req, res) => {
-    const query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    console.log(query);
-    db.Movies.findAll({
-      where: query
-    }).then(dbMovies => {
-      console.log(dbMovies);
-      let hbsObject = {
-        movies: dbMovies
-      };
-      console.log(hbsObject);
-      res.render("movies", hbsObject);
-    });
-  });
+//problem area below
+  // app.get("/api/movies", (req, res) => {
+  //   const query = {};
+  //   if (req.query.user_id) {
+  //     query.UserId = req.query.user_id;
+  //   }
+  //   console.log(query);
+  //   db.Movies.findAll({
+  //     where: query
+  //   }).then(dbMovies => {
+  //     console.log(dbMovies);
+  //     let hbsObject = {
+  //       movies: dbMovies
+  //     };
+  //     console.log(hbsObject);
+  //     res.render("movies", hbsObject);
+  //   });
+  // });
 
   
   // app.get("/api/movies/", (req, res) => {
