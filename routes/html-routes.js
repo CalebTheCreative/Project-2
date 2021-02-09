@@ -3,6 +3,8 @@
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+var db = require("../models");
+
 
 module.exports = function(app) {
   app.get("/", (req, res) => {

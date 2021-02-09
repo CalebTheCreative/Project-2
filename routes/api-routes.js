@@ -23,26 +23,6 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-<<<<<<< HEAD
-
-  app.get("/api/movies", (req, res) => {
-    const query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    console.log(query);
-    db.Movies.findAll({
-      where: query
-    }).then(dbMovies => {
-      console.log(dbMovies);
-      const hbsObject = {
-        movies: dbMovies
-      };
-      console.log(hbsObject);
-      res.render("movies", hbsObject);
-    });
-  });
-=======
 //problem area below
   // app.get("/api/movies", (req, res) => {
   //   const query = {};
@@ -61,8 +41,8 @@ module.exports = function(app) {
   //     res.render("movies", hbsObject);
   //   });
   // });
->>>>>>> main
 
+  
   // app.get("/api/movies/", (req, res) => {
   //   db.Movies.findAll({
 
@@ -204,6 +184,7 @@ module.exports = function(app) {
 //   });
 // });
 
+
 // app.get("/api/movies", (req, res) => {
 //   const query = {};
 //   if (req.query.user_id) {
@@ -215,7 +196,7 @@ module.exports = function(app) {
 //   }).then(dbMovies => {
 //     console.log(dbMovies);
 //     for (i = 0; i < dbMovies.length; i++){
-//       let hbsObject =
+//       let hbsObject = 
 //     }
 //     let hbsObject = {
 //       name: dbMovies.name,
