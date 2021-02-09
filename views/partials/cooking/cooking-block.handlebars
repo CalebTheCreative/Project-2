@@ -1,0 +1,7 @@
+ {{this.name}}
+   <br/>
+    <button type = "button" class="btn btn-sm switchBtn change-cooked" data-id="{{this.id}}" data-newcooked ="{{this.cooked}}">
+       {{#if this.cooked}}<span><i class="fas fa-utensils"></i></span> Cook Again {{else}} <span><i class="fas fa-utensils"></i></span> Cook {{/if}}
+    </button>
+
+    <button class="btn btn-sm delete-meal deleteBtn" data-id="{{this.id}}"><span><i class="fas fa-minus-circle"></i></span> DELETE!</button>

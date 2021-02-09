@@ -1,38 +1,137 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-transparent fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand addshade" id="prevPgBtn" href="javascript:javascript:history.go(-1)">Previous Page</a>
+  <div class="container-fluid actNav">
+    <a class="navbar-brand addshade" id="prevPgBtn" href="javascript:javascript:history.go(-1)">Prev Page</a>
     <a class="navbar-brand" href="#"></a>
-    <a class="text-center navBrandLogo" href="/members">
-        <img src="/img/stay-in-logo.png" class="addshade" id="headerLogo" />
-    </a>
     <a class="navbar-brand" href="#"></a>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" id="logoutBtn" href="#">
       <a class="navbar-brand addshade" id="logoutBtn" href="/logout">Log Out</a>
     </a>
   </div>
 </nav>
+<div>
+  <a class="text-center" href="/members">
+    <img src="/img/stay-in-logo.png" class="headerActLogo" />
+  </a>
+</div>
+<div class="w-100 actBG">
+  <img src="/img/videogames-bg.png" class="mainBGpic" />
+  <div class="act-text-block">
+    <div class="row">
+      <div class="text-center ActChoiceCont">
+        <img src="/img/si-vg-icon.png" class="text-center mt-3 mb-3 actIcon" /><br />
+        <h4 class="text-center mt-2 addshade d-none">Welcome <span data-id="" class="member-name d-none"></span></h4>
 
-<div class="w-100">
-  <img src="/img/videogames-bg.png" id="mainBGpic" />
-  <div class="text-block">
-<div class="row">
-    
-    {{!-- Add Video Game Form --}}
-    <div class="col-md-12 mt-4 text-center">
-      <h3 class="addshade">Add a Game to the list:</h3>
-        <form class="addVG">
-            <div class="form-group">
-                <label for="addVG">Title of Video Game:</label>
-                <input type="text" id="addVG" name="name">
-                <input type="hidden" name="playedVG" value="0">
-            </div><!-- /.form-group -->
+        {{!-- Add a game --}}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-info mt-0" data-toggle="modal" data-target="#addVGModalCenter">
+          <span><i class="fas fa-gamepad"></i></span> Add a game
+        </button><br />
+        <!-- Modal -->
+        <div class="modal fade" id="addVGModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="addVGModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-info">
+                <h5 class="modal-title" id="addVGModalLongTitle">Add a Video Game</h5>
+                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-            <button class="btn btn-secondary mt-1" id="addVGBtn">Add your game!</button>
-        </form>
-        <button class="btn btn-info mt-1" id="decideVGBtn">Decide a game for me!</button>
-    </div><!-- /.column -->
+                {{!-- Add Activity Form --}}
+                <form class="addVG">
+                  <div class="form-group">
+                    <label for="addVG" class="text-dark">Video Game Title:</label>
+                    <input type="text" id="addVG" name="name">
+                    <input type="hidden" name="played" value="0">
+                  </div>
+                  <button class="btn btn-warning text-light mt-1" id="searchMovieBtn">Add your game</button>
+                </form>
 
-</div><!-- /.row -->
-</div><!-- /.text-block -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{!-- View Game List --}}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-info mt-1" id="VGlistBtn" data-toggle="modal" data-target="#VGListModal">
+          <span><i class="fas fa-list"></i></span> View your game list
+        </button><br />
+        <!-- Modal -->
+        <div class="modal fade" id="VGListModal" tabindex="-1" role="dialog" aria-labelledby="VGListModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-info">
+                <h5 class="modal-title" id="VGListModalLabel">Game List</h5>
+                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <h4 class="text-dark">Game List</h4>
+                <ul class="list-group watchlist-group">
+                  {{#each videogames}}
+                  {{#unless this.played}}
+                  <li class="text-dark list-group-item watchlist-item"><strong>
+                      {{> vg/vg-block played=false}}
+                  </li></strong>
+                  {{/unless}}
+                  {{/each}}
+                </ul>
+
+                <h4 class="text-dark mt-2">Already played</h4>
+                <ul class="list-group watchlist-group">
+                  {{#each videogames}}
+                  {{#if this.played}}
+                  <li class="text-dark list-group-item watchlist-item"><strong>
+                      {{> vg/vg-block played=true}}
+                  </li></strong>
+                  {{/if}}
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{!-- Decide a Game For Me --}}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-info mt-1 mb-4" data-toggle="modal" data-target="#decideModal">
+          <span><i class="fas fa-gamepad"></i></span> Decide a game for me!</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="decideModal" tabindex="-1" role="dialog" aria-labelledby="decidedLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-info">
+                <h5 class="modal-title" id="decidedLabel">Our Pick For You</h5>
+                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"></span>
+                </button>
+              </div>
+              <div class="modal-body" id="decidedBody">
+                <h1 id="decidedVG">Game Title</h1>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.text block -->
 </div><!-- /.w-100 -->

@@ -87,7 +87,7 @@ $(document).ready(() => {
         const buttonEl = $(
           `<button><i class = 'fas fa-heart' data-index=${i}></i> Add to watchlist</button>` // Added Add to Watchlist
         );
-        buttonEl.attr("class", "btn btn-sm resAddWatch"); //Updated Classes
+        buttonEl.attr("class", "btn btn-sm resAddWatch mt-0"); //Updated Classes
         buttonEl.attr("id", `addMovieBtn${i}`);
         buttonEl.attr("data-index", i);
         $("#resultsContainer").append(titleEl);

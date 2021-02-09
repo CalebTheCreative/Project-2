@@ -1,0 +1,7 @@
+ {{this.name}}
+   <br/>
+    <button type = "button" class="btn btn-sm switchBtn change-played" data-id="{{this.id}}" data-newplayedbg ="{{this.played}}">
+       {{#if this.played}}<span><i class="fas fa-dice"></i></span> Play Again {{else}} <span><i class="fas fa-dice"></i></span> Play {{/if}}
+    </button>
+
+    <button class="btn btn-sm delete-bg deleteBtn" data-id="{{this.id}}"><span><i class="fas fa-minus-circle"></i></span> DELETE!</button>
