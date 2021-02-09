@@ -1,6 +1,3 @@
-// Requiring path to so we can use relative routes to our HTML files
-//const path = require("path");
-
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 var db = require("../models");
@@ -30,35 +27,44 @@ module.exports = function(app) {
   });
 
   app.get("/boardgames", isAuthenticated, (req, res) => {
-    res.render("boardgames");
+    db.Board.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbBoardlist => {
+        res.render("boardgames", { boards: dbBoardlist });
+      }
+    );
   });
 
   app.get("/cooking", isAuthenticated, (req, res) => {
-    res.render("cooking");
+    db.Cooking.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbCookinglist => {
+        res.render("cooking", { cooking: dbCookinglist });
+      }
+    );
   });
 
   app.get("/movies", isAuthenticated, (req, res) => {
     db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
       dbWatchlist => {
         res.render("movies", { movies: dbWatchlist });
-      });
+      }
+    );
   });
 
   app.get("/videogames", isAuthenticated, (req, res) => {
-    res.render("videogames");
-  });
+    db.VideoGames.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbVideolist => {
+        res.render("videogames", { videogames: dbVideolist });
+      }
+    );
+  });  
 
-  app.get("/videogames", isAuthenticated, (req, res) => {
-    res.render("videogames");
-  });
+  // app.get("/alldecide", isAuthenticated, (req, res) => {
+  //   res.render("alldecide");
+  // });
 
-  app.get("/alldecide", isAuthenticated, (req, res) => {
-    res.render("alldecide");
-  });
-
-  app.get("/bigwheel", isAuthenticated, (req, res) => {
-    res.render("bigwheel");
-  });
+  // app.get("/bigwheel", isAuthenticated, (req, res) => {
+  //   res.render("bigwheel");
+  // });
 };
 
 // app.get("/movies", isAuthenticated, (req, res) => {
@@ -67,4 +73,21 @@ module.exports = function(app) {
 //   db.Movies.findAll({ raw: true }).then(dbWatchlist => {
 //    res.render("movies", { movies: dbWatchlist });
 //   });
+// });
+
+
+// app.get("/movies", isAuthenticated, (req, res) => {
+//   db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+//     dbWatchlist => {
+//       res.render("movies", { movies: dbWatchlist });
+//       return;
+//     }
+//   );
+//   db.Movies.findAll({ raw: true, where: { UserId: req.user.id }, order: Sequelize.literal('rand()'), limit: 1 }).then(
+//     dbRandomlist =>
+//   {
+//     console.log(dbRandomlist);
+//     res.render("movies", { random: dbRandomlist });
+//   }
+// );
 // });

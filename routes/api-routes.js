@@ -23,49 +23,8 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-//problem area below
-  // app.get("/api/movies", (req, res) => {
-  //   const query = {};
-  //   if (req.query.user_id) {
-  //     query.UserId = req.query.user_id;
-  //   }
-  //   console.log(query);
-  //   db.Movies.findAll({
-  //     where: query
-  //   }).then(dbMovies => {
-  //     console.log(dbMovies);
-  //     let hbsObject = {
-  //       movies: dbMovies
-  //     };
-  //     console.log(hbsObject);
-  //     res.render("movies", hbsObject);
-  //   });
-  // });
 
-  
-  // app.get("/api/movies/", (req, res) => {
-  //   db.Movies.findAll({
-
-  //     var hbsObject = {
-  //       name: data.name,
-  //       watched: data.watched
-  //     };
-  //     console.log(hbsObject);
-  //     res.render("movies", hbsObject);
-  //   });
-  // });
-
-  // app.put("/api/movies/:id", (req, res) => {
-  //   console.log(req.params.id);
-  //   db.Movies.update({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function (dbWatch){
-  //     res.json(dbWatch)
-  //   });
-  // });
-
+  //Movies Routes
   app.put("/api/movies/:id", (req, res) => {
     db.Movies.update(req.body, {
       watched: req.body.watched,
@@ -84,6 +43,72 @@ module.exports = function(app) {
       }
     }).then(dbMovies => {
       res.json(dbMovies);
+    });
+  });
+
+  //Boards Routes
+  app.put("/api/boards/:id", (req, res) => {
+    db.Board.update(req.body, {
+      played: req.body.played,
+      where: {
+        id: req.params.id
+      }
+    }).then(dbBoards => {
+      res.json(dbBoards);
+    });
+  });
+
+  app.delete("/api/boards/:id", (req, res) => {
+    db.Board.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbBoards => {
+      res.json(dbBoards);
+    });
+  });
+
+  //Cooking Routes
+  app.put("/api/cookings/:id", (req, res) => {
+    db.Cooking.update(req.body, {
+      cooked: req.body.played,
+      where: {
+        id: req.params.id
+      }
+    }).then(dbCookings => {
+      res.json(dbCookings);
+    });
+  });
+
+  app.delete("/api/cookings/:id", (req, res) => {
+    db.Cooking.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbCookings => {
+      res.json(dbCookings);
+    });
+  });
+
+  //Video Games Routes
+  app.put("/api/videogames/:id", (req, res) => {
+    db.VideoGames.update(req.body, {
+      played: req.body.played,
+      where: {
+        id: req.params.id
+      }
+    }).then(dbVideoGames => {
+      res.json(dbVideoGames);
+    });
+  });
+
+  app.delete("/api/videogames/:id", (req, res) => {
+    db.VideoGames.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbVideoGames => {
+      res.json(dbVideoGames);
     });
   });
 
@@ -218,3 +243,49 @@ module.exports = function(app) {
 //     res.render("movies", hbsObject);
 //   });
 // });
+  //problem area below
+  // app.get("/api/movies", (req, res) => {
+  //   const query = {};
+  //   if (req.query.user_id) {
+  //     query.UserId = req.query.user_id;
+  //   }
+  //   console.log(query);
+  //   db.Movies.findAll({
+  //     where: query
+  //   }).then(dbMovies => {
+  //     console.log(dbMovies);
+  //     let hbsObject = {
+  //       movies: dbMovies
+  //     };
+  //     console.log(hbsObject);
+  //     res.render("movies", hbsObject);
+  //   });
+  // });
+
+  
+  // app.get("/api/movies/", (req, res) => {
+  //   db.Movies.findAll({
+
+  //     var hbsObject = {
+  //       name: data.name,
+  //       watched: data.watched
+  //     };
+  //     console.log(hbsObject);
+  //     res.render("movies", hbsObject);
+  //   });
+  // });
+
+  // app.get("/api/movies/", (req, res) => {
+  //   db.Movies.findAll({ order: Sequelize.literal('rand()'), limit: 3}).then(())
+  // })
+
+  // app.put("/api/movies/:id", (req, res) => {
+  //   console.log(req.params.id);
+  //   db.Movies.update({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function (dbWatch){
+  //     res.json(dbWatch)
+  //   });
+  // });
