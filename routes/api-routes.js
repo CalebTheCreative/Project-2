@@ -1,6 +1,7 @@
 // Requiring our models and passport as configured
 const db = require("../models");
 const passport = require("../config/passport");
+const { Sequelize } = require("../models");
 
 module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
@@ -54,6 +55,10 @@ module.exports = function(app) {
   //     res.render("movies", hbsObject);
   //   });
   // });
+
+  // app.get("/api/movies/", (req, res) => {
+  //   db.Movies.findAll({ order: Sequelize.literal('rand()'), limit: 3}).then(())
+  // })
 
   // app.put("/api/movies/:id", (req, res) => {
   //   console.log(req.params.id);
