@@ -25,16 +25,16 @@
         
         {{!-- Search For Movie --}}
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-info mt-0" data-toggle="modal" data-target="#exampleModalCenter">
+        <button type="button" class="btn btn-info mt-0" data-toggle="modal" data-target="#searchModalCenter">
           <span><i class="fas fa-search"></i></span>  Search for a movie
         </button><br />
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="searchModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="searchModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-              <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="exampleModalLongTitle">Movie Search</h5>
+              <div class="modal-header bg-info">
+                <h5 class="modal-title" id="searchModalLongTitle">Movie Search</h5>
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true"></span>
                 </button>
@@ -50,7 +50,7 @@
                 </form>
                 <hr class="my-3 text-dark" />
                 <h3 class="text-dark">Results:</h3>
-                <ul class="list-group-item text-dark">
+                <ul class="list-group text-dark">
                   <div id="resultsContainer">
                   </div>
                 </ul>
@@ -77,16 +77,16 @@
         {{!-- View Watch List --}}
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-info mt-1" id="watchlistBtn" data-toggle="modal"
-          data-target="#exampleModal">
+          data-target="#watchModal">
           <span><i class="fas fa-list"></i></span>  View your watchlist
         </button><br />
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="watchModal" tabindex="-1" role="dialog" aria-labelledby="watchModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="exampleModalLabel">Watchlist</h5>
+              <div class="modal-header bg-info">
+                <h5 class="modal-title" id="watchModalLabel">Watchlist</h5>
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true"></span>
                 </button>
@@ -94,23 +94,23 @@
               <div class="modal-body">
                 
                 <h4 class="text-dark">Watchlist</h4>
-                <ul>
+                <ul class="list-group watchlist-group">
                   {{#each movies}}
                   {{#unless this.watched}}
-                  <li class="text-dark">
+                  <li class="text-dark list-group-item watchlist-item"><strong>
                     {{> movies/movie-block watched=false}}
-                  </li>
+                  </li></strong>
                   {{/unless}}
                   {{/each}}
                 </ul>
 
-                <h4 class="text-dark">Already watched</h4>
-                <ul>
+                <h4 class="text-dark mt-2">Already watched</h4>
+                <ul class="list-group watchlist-group">
                   {{#each movies}}
                   {{#if this.watched}}
-                  <li class="text-dark">
+                  <li class="text-dark list-group-item watchlist-item"><strong>
                     {{> movies/movie-block watched=true}}
-                  </li>
+                  </li></strong>
                   {{/if}}
                   {{/each}}
                 </ul>
@@ -128,13 +128,13 @@
   <span><i class="fas fa-film"></i></span>  Decide a movie for me!</button>
 
 <!-- Modal -->
-<div class="modal fade" id="decideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="decideModal" tabindex="-1" role="dialog" aria-labelledby="decidedLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary">
-        <h5 class="modal-title" id="exampleModalLabel">Our Pick For You</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+      <div class="modal-header bg-info">
+        <h5 class="modal-title" id="decidedLabel">Our Pick For You</h5>
+        <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
         </button>
       </div>
       <div class="modal-body" id="decidedBody">
@@ -142,7 +142,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
