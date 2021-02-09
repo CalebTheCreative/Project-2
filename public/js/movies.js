@@ -1,6 +1,4 @@
 $(document).ready(() => {
-  //const movieInput = $("#addMovie");
-  //console.log(movieInput);
   const apiKey = "715a8e5a66ff527f09cba3f681f691f2";
   let queryURL = "";
   let imgURL = "https://image.tmdb.org/t/p/w500";
@@ -17,13 +15,11 @@ $(document).ready(() => {
       // ===================
       // Pop Code
       $(`#popAddWatchList${i}`).on("click", handlePopMovieFormSubmit);
-      //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
       function handlePopMovieFormSubmit(event) {
         event.preventDefault();
         const globalPopUserId = $(".member-name").data("id");
 
         uploadMovie({
-          // name: movieInput.val().trim(),
           name: popTitle,
           watched: "false",
           UserId: globalPopUserId
@@ -31,6 +27,7 @@ $(document).ready(() => {
       }
       function uploadMovie(movieData) {
         $.post("/api/movies", movieData);
+        location.reload();
       }
     }
   });
@@ -42,16 +39,12 @@ $(document).ready(() => {
       .trim();
     let resultsArr = [];
     const queryURL2 = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieInput}&page=1&include_adult=false`;
-    //console.log(queryURL2);
-    // console.log(movieInput);
     $.ajax({
       url: queryURL2,
       method: "GET"
     }).then(response => {
-      //console.log(response);
       $("#resultsContainer").empty();
       resultsArr = response.results;
-      //console.log(resultsArr);
       for (let i = 0; i < resultsArr.length; i++) {
         const title = resultsArr[i].title;
         const releaseDate = (resultsArr[i].release_date).slice(0,4);
@@ -69,17 +62,12 @@ $(document).ready(() => {
       }
       for (let i = 0; i < resultsArr.length; i++) {
         $(document).on("click", `#addMovieBtn${i}`, handleMovieFormSubmit);
-        //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
         function handleMovieFormSubmit(event) {
           event.preventDefault();
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
-          // const globalMovie = $(this).parent().text();
-          // console.log(globalMovie);
-          // console.log(globalUserId);
 
           uploadMovie({
-            // name: movieInput.val().trim(),
             name: globalMovie,
             watched: "false",
             UserId: globalUserId
@@ -94,15 +82,12 @@ $(document).ready(() => {
           `#popAddWatchList${i}`,
           handlePopMovieFormSubmit
         );
-        //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
         function handlePopMovieFormSubmit(event) {
           event.preventDefault();
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
-          // const globalMovie = $(this).parent().text();
 
           uploadMovie({
-            // name: movieInput.val().trim(),
             name: globalMovie,
             watched: "false",
             UserId: globalUserId
@@ -110,6 +95,7 @@ $(document).ready(() => {
         }
         function uploadMovie(movieData) {
           $.post("/api/movies", movieData);
+          location.reload();
         }
       }
       return;
@@ -147,18 +133,6 @@ $(() => {
         location.reload();
       });
     }
-    // let newWatchedState = {
-    //   watched: newWatched
-    // };
-
-    // console.log(newWatchedState);
-    // $.ajax("/api/movies/" + id, {
-    //   type: "PUT",
-    //   data: newWatchedState
-    // }).then(() => {
-    //   console.log("changed watched to", newWatched);
-    //   //location.reload();
-    // });
   });
 
   //function to delete
@@ -172,15 +146,3 @@ $(() => {
     });
   });
 });
-// let buttonEl = $("<button class = btn btn-warning text-light'data-index='" + i + "></button>")
-// buttonEl.attr('class', 'button favoriteButton');
-// buttonEl.attr("data-index", i)
-// const results = response.results;
-// const data = { movies: [] };
-// for (let i = 0; i < results.length; i++) {
-//   const currentTitle = {
-//     title: results[i].title,
-//     releaseDate: results[i].release_date
-//   };
-//   data.movies.push(currentTitle);
-//   $("#movieResults")

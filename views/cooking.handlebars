@@ -1,4 +1,4 @@
-<!-- Navbar -->
+{{!-- Future Cooking Code <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-transparent fixed-top">
   <div class="container-fluid actNav">
     <a class="navbar-brand addshade" id="prevPgBtn" href="javascript:javascript:history.go(-1)">Prev Page</a>
@@ -79,7 +79,7 @@
 
                 <h4 class="text-dark">Meal List:</h4>
                 <ul class="list-group watchlist-group">
-                  {{#each meals}}
+                  {{#each cooking}}
                   {{#unless this.cooked}}
                   <li class="text-dark list-group-item watchlist-item"><strong>
                       {{> cooking/cooking-block cooked=false}}
@@ -90,7 +90,7 @@
 
                 <h4 class="text-dark mt-2">Already Cooked:</h4>
                 <ul class="list-group watchlist-group">
-                  {{#each meals}}
+                  {{#each cooking}}
                   {{#if this.cooked}}
                   <li class="text-dark list-group-item watchlist-item"><strong>
                       {{> cooking/cooking-block played=true}}
@@ -134,4 +134,4 @@
       </div>
     </div><!-- /.row -->
   </div><!-- /.text block -->
-</div><!-- /.w-100 -->
+</div><!-- /.w-100 --> --}}

@@ -1,20 +1,20 @@
 # Stay In App
 
-This is user database app that let's you add items into four separate categories (movies, videogames, boardgames, and cooking) and then will randomly select a choice from your list as a fun way of deciding an activity for you to enjoy indoors.
+This is user database app that let's you create update and delete movies from your watchlist. It keeps track of each user's specific watchlist based on their login.
 
 ## User Story
 * * *
 ```md
 AS A person at home
-I WANT a random inside activity generator
-SO THAT I can plan a different activity everytime I want to stay in
+I WANT a way of keeping track of movies I want to watch
+SO THAT I can see a new movie everytime I want to stay in
 ```
 
 ## Instructions
 * * *
 1) Login or sign up to the Stay In app 
-2) Click on the category you're interested in. the choices are `Watch a Movie`, `Cook a Meal`, `Play a Video Game`, `Play a Board Game`, and if you are interested in any of the categories you can choose `Decide For Me`.
-3) You can add, update, or delete items from your list in each category. When you are ready, click on the `Decide` button and the app will randomly choose an item from your list for you.
+2) Click on the `Watch a Movie` button
+3) You can add, update, or delete items from your watch list.
 
 ## Link to the deployed application
 * * *
@@ -26,7 +26,7 @@ Finding a way to connect the database and routes to each page using Handlebars w
 
 ## FUTURE DEVELOPMENT
 * * *
-Our plans for future development of this project is to add API calls to the Board Game, Video Game, and Cooking sections. We also would like to eventually add an option that randomly decides between the four options (boardgames, cooking, movies, videogames) for the user to enjoy.
+Our plans for future development of this project is to implement more activities like board games, video games, and cooking and add API calls to each of those new sections. We also would like to eventually add an option that randomly decides between the four options (boardgames, cooking, movies, videogames) for the user to enjoy.
 
 ## Technologies Used
 * * *

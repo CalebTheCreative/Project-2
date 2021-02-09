@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Cooking = sequelize.define("Cooking", {
+  const Cookings = sequelize.define("Cookings", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -8,13 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     cooked: DataTypes.BOOLEAN
   });
 
-  Cooking.associate = function(models) {
-    Cooking.belongsTo(models.User, {
+  Cookings.associate = function(models) {
+    Cookings.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return Cooking;
+  return Cookings;
 };
