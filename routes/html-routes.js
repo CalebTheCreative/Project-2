@@ -75,7 +75,6 @@ module.exports = function(app) {
 //   });
 // });
 
-
 // app.get("/movies", isAuthenticated, (req, res) => {
 //   db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
 //     dbWatchlist => {
