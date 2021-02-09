@@ -17,6 +17,7 @@ $(document).ready(() => {
       const popTitle = results[i].title;
 
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
+      $(`#popularTitle${i}`).text(popTitle);
       // ===================
       // Pop Code
       $(`#popAddWatchList${i}`).on("click", handlePopMovieFormSubmit);
@@ -50,17 +51,6 @@ $(document).ready(() => {
     }
   });
 
-<<<<<<< HEAD
-  $(document).on("click", "#watchlistBtn", handleMovieWatchlist);
-  function handleMovieWatchlist() {
-    $.ajax({
-      url: "/api/movies",
-      method: "GET"
-    }).done(response => {
-      console.log(response);
-    });
-  }
-=======
   // $(document).on("click", "#watchlistBtn", handleMovieWatchlist);
   // function handleMovieWatchlist() {
   //   $.ajax({
@@ -70,7 +60,6 @@ $(document).ready(() => {
   //     console.log(response);
   //   });
   // }
->>>>>>> main
 
   $("#searchMovieBtn").click(event => {
     event.preventDefault();
@@ -91,14 +80,14 @@ $(document).ready(() => {
       console.log(resultsArr);
       for (let i = 0; i < resultsArr.length; i++) {
         const title = resultsArr[i].title;
-        const releaseDate = resultsArr[i].release_date;
+        const releaseDate = resultsArr[i].release_date.slice(0, 4); // SLICED TO ONLY INCLUDE YEAR
         const titleEl = $(
-          `<li class = 'list-group-item text-dark'><p id='MovieTitle${i}'>${title}</p><span id='MovieYear'>${releaseDate}</span></li>`
+          `<li class = 'list-group-item text-dark'><h4 id='MovieTitle${i}'>${title}</h4><span id='MovieYear'><p class="resultReleaseDate">${releaseDate}</p></span></li>` // Made year text smaller
         );
         const buttonEl = $(
-          `<button><i class = 'fas fa-heart' data-index=${i}></i></button>`
+          `<button><i class = 'fas fa-heart' data-index=${i}></i> Add to watchlist</button>` // Added Add to Watchlist
         );
-        buttonEl.attr("class", "btn");
+        buttonEl.attr("class", "btn btn-sm resAddWatch"); //Updated Classes
         buttonEl.attr("id", `addMovieBtn${i}`);
         buttonEl.attr("data-index", i);
         $("#resultsContainer").append(titleEl);
