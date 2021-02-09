@@ -26,21 +26,21 @@ module.exports = function(app) {
     res.render("members");
   });
 
-  app.get("/boardgames", isAuthenticated, (req, res) => {
-    db.Board.findAll({ raw: true, where: { UserId: req.user.id } }).then(
-      dbBoardlist => {
-        res.render("boardgames", { boards: dbBoardlist });
-      }
-    );
-  });
+  // app.get("/boardgames", isAuthenticated, (req, res) => {
+  //   db.Board.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+  //     dbBoardlist => {
+  //       res.render("boardgames", { boards: dbBoardlist });
+  //     }
+  //   );
+  // });
 
-  app.get("/cooking", isAuthenticated, (req, res) => {
-    db.Cooking.findAll({ raw: true, where: { UserId: req.user.id } }).then(
-      dbCookinglist => {
-        res.render("cooking", { cooking: dbCookinglist });
-      }
-    );
-  });
+  // app.get("/cooking", isAuthenticated, (req, res) => {
+  //   db.Cookings.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+  //     dbCookinglist => {
+  //       res.render("cooking", { cookings: dbCookinglist });
+  //     }
+  //   );
+  // });
 
   app.get("/movies", isAuthenticated, (req, res) => {
     db.Movies.findAll({ raw: true, where: { UserId: req.user.id } }).then(
@@ -50,13 +50,13 @@ module.exports = function(app) {
     );
   });
 
-  app.get("/videogames", isAuthenticated, (req, res) => {
-    db.VideoGames.findAll({ raw: true, where: { UserId: req.user.id } }).then(
-      dbVideolist => {
-        res.render("videogames", { videogames: dbVideolist });
-      }
-    );
-  });  
+  // app.get("/videogames", isAuthenticated, (req, res) => {
+  //   db.VideoGames.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+  //     dbVideolist => {
+  //       res.render("videogames", { videogames: dbVideolist });
+  //     }
+  //   );
+  // });  
 
   // app.get("/alldecide", isAuthenticated, (req, res) => {
   //   res.render("alldecide");

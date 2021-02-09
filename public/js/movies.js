@@ -31,6 +31,7 @@ $(document).ready(() => {
       }
       function uploadMovie(movieData) {
         $.post("/api/movies", movieData);
+        location.reload();
       }
     }
   });
@@ -110,6 +111,7 @@ $(document).ready(() => {
         }
         function uploadMovie(movieData) {
           $.post("/api/movies", movieData);
+          location.reload();
         }
       }
       return;
