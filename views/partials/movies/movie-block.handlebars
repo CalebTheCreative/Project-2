@@ -1,7 +1,7 @@
  {{this.id}}. {{this.name}}
 
-    <button type = "button" class="change-watched" data-id="{{this.id}}" data-newwatched ="{{this.watched}}">
+    <button type = "button" class="btn btn-sm switchBtn change-watched" data-id="{{this.id}}" data-newwatched ="{{this.watched}}">
        {{#if this.watched}} Watch Again {{else}} Add to Watchlist {{/if}}
     </button>
 
-    <button class="delete-movie" data-id="{{this.id}}">DELETE!</button>
+    <button class="btn delete-movie deleteBtn" data-id="{{this.id}}"><span><i class="fas fa-minus-circle"></i></span> DELETE!</button>

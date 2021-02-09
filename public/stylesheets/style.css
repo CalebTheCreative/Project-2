@@ -331,3 +331,11 @@ a:link {
 .resultReleaseDate {
   font-size: 12px;
 }
+
+ul {
+  list-style: none
+}
+
+.switchBtn {
+  color: purple;
+}
