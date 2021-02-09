@@ -31,11 +31,19 @@ module.exports = function(app) {
   });
 
   app.get("/boardgames", isAuthenticated, (req, res) => {
-    res.render("boardgames");
+    db.Board.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbBoardlist => {
+        res.render("boardgames", { boards: dbBoardlist });
+      }
+    );
   });
 
   app.get("/cooking", isAuthenticated, (req, res) => {
-    res.render("cooking");
+    db.Cooking.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbCookinglist => {
+        res.render("cooking", { cooking: dbCookinglist });
+      }
+    );
   });
 
   app.get("/movies", isAuthenticated, (req, res) => {
@@ -44,30 +52,23 @@ module.exports = function(app) {
         res.render("movies", { movies: dbWatchlist });
       }
     );
-    db.Movies.findAll({ raw: true, where: { UserId: req.user.id }, order: Sequelize.literal('rand()'), limit: 1 }).then(
-      dbRandomlist =>
-    {
-      console.log(dbRandomlist);
-      res.render("partials/movies/decide-block", { random: dbRandomlist });
-    }
-  );
   });
 
   app.get("/videogames", isAuthenticated, (req, res) => {
-    res.render("videogames");
-  });
+    db.VideoGames.findAll({ raw: true, where: { UserId: req.user.id } }).then(
+      dbVideolist => {
+        res.render("videogames", { videogames: dbVideolist });
+      }
+    );
+  });  
 
-  app.get("/videogames", isAuthenticated, (req, res) => {
-    res.render("videogames");
-  });
+  // app.get("/alldecide", isAuthenticated, (req, res) => {
+  //   res.render("alldecide");
+  // });
 
-  app.get("/alldecide", isAuthenticated, (req, res) => {
-    res.render("alldecide");
-  });
-
-  app.get("/bigwheel", isAuthenticated, (req, res) => {
-    res.render("bigwheel");
-  });
+  // app.get("/bigwheel", isAuthenticated, (req, res) => {
+  //   res.render("bigwheel");
+  // });
 };
 
 // app.get("/movies", isAuthenticated, (req, res) => {
