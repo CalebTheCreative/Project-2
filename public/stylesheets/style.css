@@ -64,18 +64,6 @@ form.login {
   position: relative;
 }
 
-.text-block {
-  position: absolute;
-  top: 35%;
-  right: 30%;
-  left: 30%;
-  width: 40%;
-  height: auto;
-  color: white;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .cred-text-block {
   position: absolute;
   top: 15%;
@@ -99,14 +87,31 @@ form.login {
   padding-right: 20px;
 }
 
-.btn-primary {
-  width: 400px;
-  height: auto;
-  background-color: red;
+.actBG {
+  position: relative;
 }
 
-#logoutBtn, #prevPgBtn {
+.ActChoiceCont {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 60% !important;
+  height: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+.act-text-block {
+  position: absolute;
+  top: 20%;
+  right: 30%;
+  left: 30%;
+  width: 40%;
+  height: auto;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .addshade {
@@ -191,12 +196,26 @@ a:link {
 .btn-info{
  
   background-color: #04a3ff !important;
+
+  color:#FFF !important;
    
-  color:#FFF;
-   
-  border-color: #024870 !important;
+  border-color: #04a3ff !important;
+
+  width: 300px;
+
+  height: auto;
    
 }
+
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+  background-color:#0188d6 !important;
+     
+  color:#FFF !important;
+     
+  border-color: #0188d6 !important;
+     
+}
+
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
   background-color:#024870 !important;
@@ -207,7 +226,7 @@ a:link {
      
 }
 
-#headerActLogo {
+.headerActLogo {
   position: fixed;
   width: 8%;
   height: auto;
@@ -226,10 +245,89 @@ a:link {
 
 #prevPgBtn, #logoutBtn {
   position: relative;
-  top: 10px;
+  top: 20px;
+  color: white;
 }
 
 .carousel-indicators {
   position: fixed;
   bottom: 30px;
+}
+
+#movie-slide{
+  position:relative;
+}
+
+.popM-title {
+  position:absolute;
+  bottom: 12%;
+  left: 15%;
+}
+
+.modal-content{
+  max-height: 20%;
+}
+
+.actIcon {
+  width: 25% !important;
+  height: auto !important;
+}
+
+.mostPopRow {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 100% !important;
+  height: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+.arrow-info{
+ 
+  background-color: #04a3ff !important;
+
+  color:#FFF !important;
+   
+  border-color: #04a3ff !important;
+
+  width: 20px;
+
+  height: auto;
+   
+}
+
+.arrow-info:hover, .arrow-info:focus, .arrow-info:active, .arrow-info.active, .open .dropdown-toggle.arrow-info {
+  background-color:#0188d6 !important;
+     
+  color:#FFF !important;
+     
+  border-color: #0188d6 !important;
+     
+}
+
+.resAddWatch {
+  background-color: #04a3ff !important;
+  
+  color:#FFF !important;
+     
+  border-color: #04a3ff !important;
+  
+  width: 100%;
+  
+  height: auto;
+}
+
+.resAddWatch:hover, .resAddWatch:focus, .resAddWatch:active, .resAddWatch.active, .open .dropdown-toggle.resAddWatch {
+  background-color:#0188d6 !important;
+     
+  color:#FFF !important;
+     
+  border-color: #0188d6 !important;
+     
+}
+
+.resultReleaseDate {
+  font-size: 12px;
 }
