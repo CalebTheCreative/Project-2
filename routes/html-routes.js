@@ -38,7 +38,10 @@ module.exports = function(app) {
   });
 
   app.get("/movies", isAuthenticated, (req, res) => {
-    res.render("movies");
+    db.Movies.findAll({ raw: true }).then(dbWatchlist => {
+      console.log(dbWatchlist);
+      res.render("movies", { movies: dbWatchlist });
+    });
   });
 
   app.get("/videogames", isAuthenticated, (req, res) => {
