@@ -1,5 +1,3 @@
-// Oscar update 110pm Mon
-
 $(document).ready(() => {
   //const movieInput = $("#addMovie");
   //console.log(movieInput);
@@ -15,22 +13,14 @@ $(document).ready(() => {
     for (let i = 0; i < results.length; i++) {
       imgURL = `https://image.tmdb.org/t/p/w500${results[i].poster_path}`;
       const popTitle = results[i].title;
-
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
-      $(`#popularTitle${i}`).text(popTitle);
       // ===================
       // Pop Code
       $(`#popAddWatchList${i}`).on("click", handlePopMovieFormSubmit);
       //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
-
       function handlePopMovieFormSubmit(event) {
         event.preventDefault();
         const globalPopUserId = $(".member-name").data("id");
-        // const globalMovie = $(this).parent().text();
-        // console.log("------");
-        // console.log(popTitle);
-        //console.log(globalPopUserId);
-        //console.log("------");
 
         uploadMovie({
           // name: movieInput.val().trim(),
@@ -42,24 +32,8 @@ $(document).ready(() => {
       function uploadMovie(movieData) {
         $.post("/api/movies", movieData);
       }
-      // ===================
-
-      // console.log(results[i].title);
-      // let popTitle = results[i].title;
-      // console.log(poptitle);
-      // $(`popAddWatchList${i}`).click(handleMovieFormSubmit);
     }
   });
-
-  // $(document).on("click", "#watchlistBtn", handleMovieWatchlist);
-  // function handleMovieWatchlist() {
-  //   $.ajax({
-  //     url: "/api/movies",
-  //     method: "GET"
-  //   }).done(function (response){
-  //     console.log(response);
-  //   });
-  // }
 
   $("#searchMovieBtn").click(event => {
     event.preventDefault();
@@ -80,24 +54,22 @@ $(document).ready(() => {
       //console.log(resultsArr);
       for (let i = 0; i < resultsArr.length; i++) {
         const title = resultsArr[i].title;
-        const releaseDate = resultsArr[i].release_date.slice(0, 4); // SLICED TO ONLY INCLUDE YEAR
+        const releaseDate = (resultsArr[i].release_date).slice(0,4);
         const titleEl = $(
-          `<li class = 'list-group-item text-dark'><h4 id='MovieTitle${i}'>${title}</h4><span id='MovieYear'><p class="resultReleaseDate">${releaseDate}</p></span></li>` // Made year text smaller
+          `<li class = 'list-group-item text-dark'><p id='MovieTitle${i}'>${title}</p><span id='MovieYear'>${releaseDate}</span></li>`
         );
         const buttonEl = $(
-          `<button><i class = 'fas fa-heart' data-index=${i}></i> Add to watchlist</button>` // Added Add to Watchlist
+          `<button><i class = 'fas fa-heart' data-index=${i}></i> Add to watchlist</button>`
         );
-        buttonEl.attr("class", "btn btn-sm resAddWatch mt-0"); //Updated Classes
+        buttonEl.attr("class", "btn resAddWatch");
         buttonEl.attr("id", `addMovieBtn${i}`);
         buttonEl.attr("data-index", i);
         $("#resultsContainer").append(titleEl);
         $("#resultsContainer").append(buttonEl);
       }
-
       for (let i = 0; i < resultsArr.length; i++) {
         $(document).on("click", `#addMovieBtn${i}`, handleMovieFormSubmit);
         //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
-
         function handleMovieFormSubmit(event) {
           event.preventDefault();
           const globalUserId = $(".member-name").data("id");
@@ -112,26 +84,22 @@ $(document).ready(() => {
             watched: "false",
             UserId: globalUserId
           });
+          location.reload();
         }
         function uploadMovie(movieData) {
           $.post("/api/movies", movieData);
         }
-
         $(document).on(
           "click",
           `#popAddWatchList${i}`,
           handlePopMovieFormSubmit
         );
         //$(document).on("click", "#searchMovieBtn", handleMovieUpdate);
-
         function handlePopMovieFormSubmit(event) {
           event.preventDefault();
-
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
           // const globalMovie = $(this).parent().text();
-          //  console.log(globalMovie);
-          // console.log(globalUserId);
 
           uploadMovie({
             // name: movieInput.val().trim(),
@@ -144,22 +112,19 @@ $(document).ready(() => {
           $.post("/api/movies", movieData);
         }
       }
-
       return;
     });
   });
 });
-
 //function to change watched status
 $(() => {
-  $(".change-watched").on("click", function() {
-    const id = $(this).data("id");
-    const newWatched = $(this).data("newwatched");
+  $(".change-watched").on("click", function (event) {
+    let id = $(this).data("id");
+    let newWatched = $(this).data("newwatched");
     console.log(newWatched);
 
-    // eslint-disable-next-line eqeqeq
     if (newWatched == false) {
-      const newWatchedState = {
+      let newWatchedState = {
         watched: true
       };
       $.ajax("/api/movies/" + id, {
@@ -170,7 +135,7 @@ $(() => {
         location.reload();
       });
     } else {
-      const newWatchedState = {
+      let newWatchedState = {
         watched: false
       };
       console.log(newWatchedState);
@@ -197,9 +162,8 @@ $(() => {
   });
 
   //function to delete
-  $(".delete-movie").on("click", function() {
+  $(".delete-movie").on("click", function (event) {
     const id = $(this).data("id");
-
     $.ajax("/api/movies/" + id, {
       type: "DELETE"
     }).then(() => {
@@ -208,11 +172,9 @@ $(() => {
     });
   });
 });
-
 // let buttonEl = $("<button class = btn btn-warning text-light'data-index='" + i + "></button>")
 // buttonEl.attr('class', 'button favoriteButton');
 // buttonEl.attr("data-index", i)
-
 // const results = response.results;
 // const data = { movies: [] };
 // for (let i = 0; i < results.length; i++) {
