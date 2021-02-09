@@ -1,3 +1,12 @@
+// $(document.ready)(() => {
+
+
+
+
+// })
+
+
+
 //Function for when the food is typed out and clicked to search
 $("#foodSubmit").on("click", event => {
   event.preventDefault();
