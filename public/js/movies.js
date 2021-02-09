@@ -17,6 +17,7 @@ $(document).ready(() => {
       const popTitle = results[i].title;
 
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
+      $(`#popularTitle${i}`).text(popTitle);
       // ===================
       // Pop Code
       $(`#popAddWatchList${i}`).on("click", handlePopMovieFormSubmit);
@@ -26,8 +27,8 @@ $(document).ready(() => {
         event.preventDefault();
         const globalPopUserId = $(".member-name").data("id");
         // const globalMovie = $(this).parent().text();
-       // console.log("------");
-       // console.log(popTitle);
+        // console.log("------");
+        // console.log(popTitle);
         //console.log(globalPopUserId);
         //console.log("------");
 
@@ -43,7 +44,7 @@ $(document).ready(() => {
       }
       // ===================
 
-     // console.log(results[i].title);
+      // console.log(results[i].title);
       // let popTitle = results[i].title;
       // console.log(poptitle);
       // $(`popAddWatchList${i}`).click(handleMovieFormSubmit);
@@ -68,7 +69,7 @@ $(document).ready(() => {
     let resultsArr = [];
     const queryURL2 = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieInput}&page=1&include_adult=false`;
     //console.log(queryURL2);
-   // console.log(movieInput);
+    // console.log(movieInput);
     $.ajax({
       url: queryURL2,
       method: "GET"
@@ -79,14 +80,14 @@ $(document).ready(() => {
       //console.log(resultsArr);
       for (let i = 0; i < resultsArr.length; i++) {
         const title = resultsArr[i].title;
-        const releaseDate = resultsArr[i].release_date;
+        const releaseDate = resultsArr[i].release_date.slice(0, 4); // SLICED TO ONLY INCLUDE YEAR
         const titleEl = $(
-          `<li class = 'list-group-item text-dark'><p id='MovieTitle${i}'>${title}</p><span id='MovieYear'>${releaseDate}</span></li>`
+          `<li class = 'list-group-item text-dark'><h4 id='MovieTitle${i}'>${title}</h4><span id='MovieYear'><p class="resultReleaseDate">${releaseDate}</p></span></li>` // Made year text smaller
         );
         const buttonEl = $(
-          `<button><i class = 'fas fa-heart' data-index=${i}></i></button>`
+          `<button><i class = 'fas fa-heart' data-index=${i}></i> Add to watchlist</button>` // Added Add to Watchlist
         );
-        buttonEl.attr("class", "btn");
+        buttonEl.attr("class", "btn btn-sm resAddWatch"); //Updated Classes
         buttonEl.attr("id", `addMovieBtn${i}`);
         buttonEl.attr("data-index", i);
         $("#resultsContainer").append(titleEl);
@@ -102,8 +103,8 @@ $(document).ready(() => {
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
           // const globalMovie = $(this).parent().text();
-         // console.log(globalMovie);
-         // console.log(globalUserId);
+          // console.log(globalMovie);
+          // console.log(globalUserId);
 
           uploadMovie({
             // name: movieInput.val().trim(),
@@ -129,8 +130,8 @@ $(document).ready(() => {
           const globalUserId = $(".member-name").data("id");
           const globalMovie = $(`#MovieTitle${i}`).text();
           // const globalMovie = $(this).parent().text();
-        //  console.log(globalMovie);
-         // console.log(globalUserId);
+          //  console.log(globalMovie);
+          // console.log(globalUserId);
 
           uploadMovie({
             // name: movieInput.val().trim(),
@@ -151,13 +152,14 @@ $(document).ready(() => {
 
 //function to change watched status
 $(() => {
-  $(".change-watched").on("click", function (event) {
-    let id = $(this).data("id");
-    let newWatched = $(this).data("newwatched");
+  $(".change-watched").on("click", function() {
+    const id = $(this).data("id");
+    const newWatched = $(this).data("newwatched");
     console.log(newWatched);
-    
-    if (newWatched == false){
-      let newWatchedState = {
+
+    // eslint-disable-next-line eqeqeq
+    if (newWatched == false) {
+      const newWatchedState = {
         watched: true
       };
       $.ajax("/api/movies/" + id, {
@@ -168,7 +170,7 @@ $(() => {
         location.reload();
       });
     } else {
-      let newWatchedState = {
+      const newWatchedState = {
         watched: false
       };
       console.log(newWatchedState);
@@ -195,7 +197,7 @@ $(() => {
   });
 
   //function to delete
-  $(".delete-movie").on("click", function (event) {
+  $(".delete-movie").on("click", function() {
     const id = $(this).data("id");
 
     $.ajax("/api/movies/" + id, {
