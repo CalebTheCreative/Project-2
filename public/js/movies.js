@@ -50,6 +50,7 @@ $(document).ready(() => {
     }
   });
 
+<<<<<<< HEAD
   $(document).on("click", "#watchlistBtn", handleMovieWatchlist);
   function handleMovieWatchlist() {
     $.ajax({
@@ -59,6 +60,17 @@ $(document).ready(() => {
       console.log(response);
     });
   }
+=======
+  // $(document).on("click", "#watchlistBtn", handleMovieWatchlist);
+  // function handleMovieWatchlist() {
+  //   $.ajax({
+  //     url: "/api/movies",
+  //     method: "GET"
+  //   }).done(function (response){
+  //     console.log(response);
+  //   });
+  // }
+>>>>>>> main
 
   $("#searchMovieBtn").click(event => {
     event.preventDefault();

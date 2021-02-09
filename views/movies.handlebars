@@ -100,7 +100,7 @@
                 <h4 class="text-dark">Watchlist</h4>
                 <ul>                  
                   {{#each movies}}
-                  {{#unless this.dataValues.watched}}
+                  {{#unless this.watched}}
                   <li>
                     {{> movies/movie-block watched=false}}
                   </li>
@@ -111,7 +111,7 @@
                 <h4 class="text-dark">Already watched</h4>
                 <ul>
                   {{#each movies}}
-                  {{#if this.dataValues.watched}}
+                  {{#if this.watched}}
                   <li>
                     {{> movies/movie-block watched=true}}
                   </li>
