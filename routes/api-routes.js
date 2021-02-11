@@ -63,7 +63,7 @@ module.exports = function(app) {
     });
   });
 
-  // Route for updating watch status of movie
+  // Route for updating watched status of movie
   app.put("/api/movies/:id", (req, res) => {
     db.Movies.update(req.body, {
       watched: req.body.watched,
