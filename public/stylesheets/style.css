@@ -1,37 +1,102 @@
+/*================================================================================
+Document styling
+================================================================================ */
 * {
   margin: 0;
   padding: 0;
+}
+
+.container {
+  position: relative;
+}
+
+.addshade {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.658);
+}
+
+/* =============== Navnar =============== */
+.navBrandLogo {
+  position: relative;
+  left: 55px;
+  width: 40%;
+  height: auto;
+}
+
+#prevPgBtn, #logoutBtn {
+  position: relative;
+  top: 20px;
+  color: white;
+}
+
+
+/* =============== Button Sizing =============== */
+.btn-small {
+  padding: 5px 10px;
+  font-size: 10px;
+  border-radius: 10px;
+}
+
+/* =============== Links =============== */
+a:link {
+  text-decoration: none;
+}
+
+/* =============== Make Blue =============== */
+.text-info {
+  color: #04a3ff !important;
+}
+
+.stayBlueBG {
+  color: rgb(4, 163, 255);
+  background-color: rgb(4, 163, 255);
+  border-color: rgb(4, 163, 255);
+}
+
+.makeBlueText {
+  color: #04a3ff !important;
+}
+
+.btn-info{
+  background-color: #04a3ff !important;
+  color:#FFF !important;
+  border-color: #04a3ff !important;
+  width: 300px;
+  height: auto;  
+}
+
+.bg-info {
+  background-color: #04a3ff !important;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+  background-color:#0188d6 !important;
+  color:#FFF !important;
+  border-color: #0188d6 !important;
+}
+
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color:#024870 !important;
+  color:#FFF;
+  border-color: #01283f !important;
 }
 
 .modal-header {
   background-color: #04a3ff !important;
 }
 
+/* =============== Make Yellow =============== */
 .btn-warning {
   background-color: rgb(255, 208, 0) !important;
-
   color:#FFF !important;
-
   border-color: rgb(255, 208, 0) !important;
 }
-
-.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open .dropdown-toggle.btn-warning {
-  background-color:rgb(255, 196, 0) !important;
-     
-  color:#FFF !important;
-     
-  border-color: rgb(255, 196, 0) !important;
-     
-}
-
-/* =============== Credential Pages =============== */
+/*================================================================================
+Credential Pages
+================================================================================ */
 form.signup,
 form.login {
   margin-top: 20px;
-}
-
-.actNav {
-  position: relative;
 }
 
 #email-input {
@@ -53,38 +118,6 @@ form.login {
   height: auto;
 }
 
-/* =============== Members Page =============== */
-.mainBtn {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  width: 3.5in;
-}
-
-/* =============== Carousel =============== */
-
-#movie-carousel {
-  margin: 0 auto;
-  max-width: 100%;
-}
-
-#movie-slide {
-  position: relative;
-  margin: 0 auto;
-  max-width: 250px;
-  max-height: 500px;
-}
-
-.addwatchlist {
-  margin: 0 auto;
-  align-content: center;
-  float: inline-start;
-  width: 100%;
-}
-
-.container {
-  position: relative;
-}
-
 .cred-text-block {
   position: absolute;
   top: 15%;
@@ -95,6 +128,25 @@ form.login {
   color: white;
   margin-left: auto;
   margin-right: auto;
+}
+
+.credCont {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 600px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+/*================================================================================
+Members Page
+================================================================================ */
+.mainBtn {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 3.5in;
 }
 
 .main-text-block {
@@ -110,6 +162,37 @@ form.login {
   padding-left: 20px;
   padding-right: 20px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+.mainCont {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 600px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+.mainBGpic {
+  position:relative;
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+#headerMainLogo {
+  width: 50%;
+  height: auto;
+}
+
+/*================================================================================
+Activity Page(s) (Shared)
+================================================================================ */
+.actNav {
+  position: relative;
 }
 
 .actBG {
@@ -139,53 +222,84 @@ form.login {
   margin-right: auto;
 }
 
-.addshade {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.658);
+.headerActLogo {
+  position: fixed;
+  width: 8%;
+  height: auto;
+  top: 10px;
+  left: 46%;
+  z-index: 10;
 }
 
-.navBrandLogo {
+.actIcon {
+  width: 25% !important;
+  height: auto !important;
+}
+
+
+
+/*================================================================================
+Movie Page
+================================================================================ */
+/* =============== Carousel =============== */
+
+#movie-carousel {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#movie-slide {
   position: relative;
-  left: 55px;
-  width: 40%;
-  height: auto;
+  margin: 0 auto;
+  max-width: 250px;
+  max-height: 500px;
 }
 
-.stayBlueBG {
-  color: rgb(4, 163, 255);
-  background-color: rgb(4, 163, 255);
-  border-color: rgb(4, 163, 255);
-}
-
-.credCont {
-  background-color: rgba(0, 0, 0, 0.658);
-  width: 600px;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
-}
-
-.mainCont {
-  background-color: rgba(0, 0, 0, 0.658);
-  width: 600px;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
-}
-
-
-
-/* =============== Background Image =============== */
-.mainBGpic {
-  position:relative;
+.addwatchlist {
+  margin: 0 auto;
+  align-content: center;
+  float: inline-start;
   width: 100%;
+}
+
+.mostPopRow {
+  background-color: rgba(0, 0, 0, 0.658);
+  width: 100% !important;
   height: auto;
-  max-height: 100vh;
-  object-fit: cover;
-  filter: brightness(50%);
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
+}
+
+.arrow-info{ 
+  background-color: #04a3ff !important;
+  color:#FFF !important;
+  border-color: #04a3ff !important;
+  width: 20px;
+  height: auto;
+}
+
+.arrow-info:hover, .arrow-info:focus, .arrow-info:active, .arrow-info.active, .open .dropdown-toggle.arrow-info {
+  background-color:#0188d6 !important;
+  color:#FFF !important;
+  border-color: #0188d6 !important;
+}
+
+.carousel-indicators {
+  position: fixed;
+  bottom: 30px;
+}
+
+#movie-slide{
+  position:relative;
+}
+
+.popM-title {
+  position:absolute;
+  bottom: 12%;
+  left: 15%;
 }
 
 /* =============== Error Message =============== */
@@ -205,171 +319,37 @@ form.login {
   color: yellow !important;
 }
 
-/* =============== Links =============== */
-a:link {
-  text-decoration: none;
-}
-
-/* =============== Make Blue =============== */
-.text-info {
-  color: #04a3ff !important;
-}
-
-.makeBlueText {
-  color: #04a3ff !important;
-}
-
-.btn-info{
- 
-  background-color: #04a3ff !important;
-
-  color:#FFF !important;
-   
-  border-color: #04a3ff !important;
-
-  width: 300px;
-
-  height: auto;  
-}
-
-.bg-info {
-  background-color: #04a3ff !important;
-}
-
-.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
-  background-color:#0188d6 !important;
-     
-  color:#FFF !important;
-     
-  border-color: #0188d6 !important;
-     
-}
-
-
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
-  background-color:#024870 !important;
-     
-  color:#FFF;
-     
-  border-color: #01283f !important;
-     
-}
-
-.headerActLogo {
-  position: fixed;
-  width: 8%;
-  height: auto;
-  top: 10px;
-  left: 46%;
-  z-index: 10;
-}
-
-#headerMainLogo {
-  width: 50%;
-  height: auto;
-}
-
-#prevPgBtn, #logoutBtn {
-  position: relative;
-  top: 20px;
-  color: white;
-}
-
-.carousel-indicators {
-  position: fixed;
-  bottom: 30px;
-}
-
-#movie-slide{
-  position:relative;
-}
-
-.popM-title {
-  position:absolute;
-  bottom: 12%;
-  left: 15%;
-}
-
+/* =============== Modal Window =============== */
 .modal-content{
   max-height: 20%;
 }
 
-.actIcon {
-  width: 25% !important;
-  height: auto !important;
-}
-
-.mostPopRow {
-  background-color: rgba(0, 0, 0, 0.658);
-  width: 100% !important;
-  height: auto;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.548);
-}
-
-.arrow-info{
- 
-  background-color: #04a3ff !important;
-
-  color:#FFF !important;
-   
-  border-color: #04a3ff !important;
-
-  width: 20px;
-
-  height: auto;
-   
-}
-
-.arrow-info:hover, .arrow-info:focus, .arrow-info:active, .arrow-info.active, .open .dropdown-toggle.arrow-info {
-  background-color:#0188d6 !important;
-     
-  color:#FFF !important;
-     
-  border-color: #0188d6 !important;
-     
-}
-
+/* =============== Movie Results =============== */
 .resAddWatch {
   background-color: #04a3ff !important;
-  
   color:#FFF !important;
-     
   border-color: #04a3ff !important;
-  
   width: 100%;
-  
   height: auto;
 }
 
 .resAddWatch:hover, .resAddWatch:focus, .resAddWatch:active, .resAddWatch.active, .open .dropdown-toggle.resAddWatch {
   background-color:#0188d6 !important;
-     
   color:#FFF !important;
-     
   border-color: #0188d6 !important;
-     
 }
 
 .resultReleaseDate {
   font-size: 12px;
 }
 
-
 .switchBtn {
   margin-left: 0px;
   margin-right: 0px;
   background-color: #04a3ff !important;
-  
   color:#FFF !important;
-     
   border-color: #04a3ff !important;
-  
   width: 30%;
-  
   height: 50%;
 }
 
@@ -377,13 +357,9 @@ a:link {
   margin-left: 0px;
   margin-right: 0px;
   background-color: red !important;
-  
   color:#FFF !important;
-     
   border-color: rgb(206, 0, 0) !important;
-  
   width: 30%;
-  
   height: 50%;
 }
 
@@ -392,12 +368,12 @@ a:link {
   font-size: 100%;
 }
 
-.btn-small {
-  padding: 5px 10px;
-  font-size: 10px;
-  border-radius: 10px;
-}
-
 .fa-heart {
   color: rgb(255, 208, 0) !important;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .open .dropdown-toggle.btn-warning {
+  background-color:rgb(255, 196, 0) !important;
+  color:#FFF !important;
+  border-color: rgb(255, 196, 0) !important;
 }
