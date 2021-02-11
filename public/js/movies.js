@@ -12,8 +12,8 @@ $(document).ready(() => {
       imgURL = `https://image.tmdb.org/t/p/w500${results[i].poster_path}`;
       const popTitle = results[i].title;
       $(`#popularImg${i}`).attr("src", `${imgURL}`);
-      // ===================
-      // Pop Code
+
+      // Popular Movie slide button function
       $(`#popAddWatchList${i}`).on("click", handlePopMovieFormSubmit);
       function handlePopMovieFormSubmit(event) {
         event.preventDefault();
@@ -32,6 +32,7 @@ $(document).ready(() => {
     }
   });
 
+  // Search Movie Button Function
   $("#searchMovieBtn").click(event => {
     event.preventDefault();
     const movieInput = $("#addMovie")
@@ -47,7 +48,8 @@ $(document).ready(() => {
       resultsArr = response.results;
       for (let i = 0; i < resultsArr.length; i++) {
         const title = resultsArr[i].title;
-        const releaseDate = (resultsArr[i].release_date).slice(0,4);
+        // eslint-disable-next-line prettier/prettier
+        const releaseDate = (resultsArr[i].release_date).slice(0, 4);
         const titleEl = $(
           `<li class = 'list-group-item text-dark'><p id='MovieTitle${i}'>${title}</p><span id='MovieYear'>${releaseDate}</span></li>`
         );
@@ -102,15 +104,18 @@ $(document).ready(() => {
     });
   });
 });
+
 //function to change watched status
 $(() => {
-  $(".change-watched").on("click", function (event) {
-    let id = $(this).data("id");
-    let newWatched = $(this).data("newwatched");
+  // eslint-disable-next-line no-unused-vars
+  $(".change-watched").on("click", function(event) {
+    const id = $(this).data("id");
+    const newWatched = $(this).data("newwatched");
     console.log(newWatched);
 
+    // eslint-disable-next-line eqeqeq
     if (newWatched == false) {
-      let newWatchedState = {
+      const newWatchedState = {
         watched: true
       };
       $.ajax("/api/movies/" + id, {
@@ -121,7 +126,7 @@ $(() => {
         location.reload();
       });
     } else {
-      let newWatchedState = {
+      const newWatchedState = {
         watched: false
       };
       console.log(newWatchedState);
@@ -136,7 +141,8 @@ $(() => {
   });
 
   //function to delete
-  $(".delete-movie").on("click", function (event) {
+  // eslint-disable-next-line no-unused-vars
+  $(".delete-movie").on("click", function(event) {
     const id = $(this).data("id");
     $.ajax("/api/movies/" + id, {
       type: "DELETE"
