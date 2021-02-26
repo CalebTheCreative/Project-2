@@ -1,4 +1,4 @@
-<!-- Navbar -->
+{{!-- ============= Navbar =============--}}
 <nav class="navbar navbar-expand-lg navbar-transparent fixed-top">
   <div class="container-fluid actNav">
     <a class="navbar-brand addshade" id="prevPgBtn" href="javascript:javascript:history.go(-1)">Prev Page</a>
@@ -10,30 +10,42 @@
     </a>
   </div>
 </nav>
+
+{{!-- ============= Body Content =============--}}
 <div>
+  {{!-- Stay In Logo --}}
   <a class="text-center" href="/members">
     <img src="/img/stay-in-logo.png" class="headerActLogo" />
   </a>
 </div>
+
+
 <div class="w-100 actBG">
+  {{!-- Background Image --}}
   <img src="/img/popcorn-bg.jpg" class="mainBGpic" />
+
+  {{!-- Content --}}
   <div class="act-text-block">
     <div class="row">
+
+      {{!-- Movie Option Box --}}
       <div class="text-center ActChoiceCont">
+        {{!-- Movie Icon --}}
         <img src="/img/si-movie-icon.png" class="text-center mt-3 mb-3 actIcon" /><br />
         <h4 class="text-center mt-2 addshade d-none">Welcome <span data-id="" class="member-name d-none"></span></h4>
 
         {{!-- Search For Movie --}}
-        <!-- Button trigger modal -->
+        {{!-- Add Activity Modal Button --}}
         <button type="button" class="btn btn-info mt-0" data-toggle="modal" data-target="#searchModalCenter">
           <span><i class="fas fa-search"></i></span> Search for a movie
         </button><br />
-        <!-- Modal -->
+        {{!-- Add Activity Modal Content --}}
         <div class="modal fade" id="searchModalCenter" tabindex="-1" role="dialog"
           aria-labelledby="searchModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header bg-info">
+                {{!-- Add Activity Modal Header --}}
                 <h5 class="modal-title" id="searchModalLongTitle">Movie Search</h5>
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true"></span>
@@ -43,20 +55,26 @@
 
                 <form class="addMovie">
                   <div class="form-group">
+                    {{!-- Add Activity Modal Body --}}
                     <label for="addMovie" class="text-dark">Title of Movie:</label>
                     <input type="text" id="addMovie" name="name">
                     <input type="hidden" name="watched" value="0">
                   </div>
+                  {{!-- Add Activity Search Button --}}
                   <button class="btn btn-warning text-light mt-1" id="searchMovieBtn">Search</button>
                 </form>
                 <hr class="my-3 text-dark" />
+                {{!-- Add Activity Modal Results --}}
                 <h3 class="text-dark">Results:</h3>
                 <ul class="list-group text-dark">
+                  {{!-- Add Avtivity Results with Add Activity Button --}}
                   <div id="resultsContainer">
                   </div>
                 </ul>
 
               </div>
+
+              {{!-- Add Activity Modal Footer --}}
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -65,16 +83,18 @@
         </div>
 
         {{!-- View Watch List --}}
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-info mt-1 mb-2" id="watchlistBtn" data-toggle="modal" data-target="#watchModal">
+        {{!-- Activity List Modal Button --}}
+        <button type="button" class="btn btn-info mt-1 mb-2" id="watchlistBtn" data-toggle="modal"
+          data-target="#watchModal">
           <span><i class="fas fa-list"></i></span> View your watchlist
         </button><br />
-        <!-- Modal -->
+        {{!-- Activity List Modal Content --}}
         <div class="modal fade" id="watchModal" tabindex="-1" role="dialog" aria-labelledby="watchModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header bg-info">
+                {{!-- Activity List Modal Title --}}
                 <h5 class="modal-title" id="watchModalLabel">Watchlist</h5>
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true"></span>
@@ -82,6 +102,7 @@
               </div>
               <div class="modal-body">
 
+                {{!-- Activity List Modal Body --}}
                 <h4 class="text-dark">Watchlist</h4>
                 <ul class="list-group watchlist-group">
                   {{#each movies}}
@@ -104,6 +125,8 @@
                   {{/each}}
                 </ul>
               </div>
+
+              {{!-- Activity List Modal Footer --}}
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
@@ -112,6 +135,7 @@
         </div>
 
         {{!-- Decide a Movie For Me --}}
+        {{!-- ===== Future Dev ==== --}}
         <!-- Button trigger modal -->
         {{!-- <button type="button" class="btn btn-info mt-1 mb-4" data-toggle="modal" data-target="#decideModal">
           <span><i class="fas fa-film"></i></span> Decide a movie for me!</button>
@@ -142,8 +166,10 @@
             </div>
           </div>
         </div> --}}
-      </div>
+
+      </div><!-- /.actChoiceCont -->
     </div><!-- /.row -->
+
     {{!-- Carousel Row --}}
     <div class="row">
       <!-- Most Popular -->
@@ -158,11 +184,12 @@
             <li data-target="#movie-carousel" data-slide-to="2"></li>
             <li data-target="#movie-carousel" data-slide-to="3"></li>
           </ol><!-- /.carousel-indicators -->
-          <!-- Slides -->
+          {{!-- Slides --}}
           <div class="carousel-inner" role="listbox">
             {{!-- Slide 1 --}}
             <div class="carousel-item active">
               <div class="row">
+                
                 {{!-- Movie 1 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -174,6 +201,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 2 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -185,6 +213,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 3 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -196,6 +225,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 4 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -207,12 +237,15 @@
                     </div>
                   </div>
                 </div>
+
                 {{!-- END ROW 1 --}}
               </div>
             </div>
+            
             {{!-- START SLIDE 2 --}}
             <div class="carousel-item">
               <div class="row">
+                
                 {{!-- Movie 5 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -224,6 +257,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 6 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -235,6 +269,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 7 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -246,6 +281,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 8 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -257,12 +293,15 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- END SLIDE 2 --}}
               </div>
             </div>
+            
             {{!-- START ROW 3 --}}
             <div class="carousel-item">
               <div class="row">
+                
                 {{!-- Movie 9 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -274,6 +313,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 10 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -285,6 +325,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 11 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -296,6 +337,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 12 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -307,12 +349,15 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- END ROW 3 --}}
               </div>
             </div>
+            
             {{!-- START ROW 4 --}}
             <div class="carousel-item">
               <div class="row">
+                
                 {{!-- Movie 13 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -324,6 +369,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 14 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -335,6 +381,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 15 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -346,6 +393,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 16 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -357,12 +405,15 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- END ROW 4 --}}
               </div>
             </div>
+            
             {{!-- START ROW 5 --}}
             <div class="carousel-item">
               <div class="row">
+                
                 {{!-- Movie 17 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -374,6 +425,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 18 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -385,6 +437,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 19 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -396,6 +449,7 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- Movie 20 --}}
                 <div class="col-md-3">
                   <div id="movie-slide">
@@ -407,9 +461,11 @@
                     </div>
                   </div>
                 </div>
+                
                 {{!-- END ROW 5 --}}
               </div>
             </div>
+          
           </div><!-- /.carousel-inner -->
           <div class="controls-top text-center my-2">
             <a class="btn-floating btn-sm arrow-info" href="#movie-carousel" data-slide="prev"><i
