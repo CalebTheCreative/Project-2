@@ -1,6 +1,7 @@
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");
+var compression = require('compression')
 
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
@@ -29,6 +30,18 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(compression({ filter: shouldCompress }))
+ 
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+ 
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
 
 // Requiring routes for html files
 require("./routes/html-routes.js")(app);
